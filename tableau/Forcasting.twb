@@ -1,0 +1,1721 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20221.22.0324.2209                               -->
+<workbook original-version='18.1' source-build='2022.1.0 (20221.22.0324.2209)' source-platform='mac' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.AnimationOnByDefault.true...AnimationOnByDefault />
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <_.fcp.AnimationOnByDefault.false...style>
+    <_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule element='animation'>
+      <_.fcp.AnimationOnByDefault.false...format attr='animation-on' value='ao-on' />
+    </_.fcp.AnimationOnByDefault.false..._.fcp.MarkAnimation.true...style-rule>
+  </_.fcp.AnimationOnByDefault.false...style>
+  <datasources>
+    <datasource caption='Data_Wrangled' inline='true' name='federated.1029trx04x9qsi1186f3m0ezmxqv' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='Data_Wrangled' name='excel-direct.0hbmtyf1soh5g910dwg3a1v62n52'>
+            <connection class='excel-direct' cleaning='yes' compat='no' dataRefreshTime='' filename='/Users/anjali/Documents/university/Visual_5320/git_clones/world_bank/data/Data_Wrangled.xlsx' interpretationMode='1' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.0hbmtyf1soh5g910dwg3a1v62n52' name='Data_Wrangled' table='[Data_Wrangled$]' type='table'>
+          <columns gridOrigin='A1:AM833:no:A1:AM833:1' lost='0' outcome='1' processed='21852'>
+            <column datatype='string' name='Country Name' ordinal='0' />
+            <column datatype='datetime' date-parse-format='yyyy' name='Year' ordinal='1' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)' ordinal='2' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)' ordinal='3' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)' ordinal='4' />
+            <column datatype='real' name='Employment in agriculture (% of total employment) (modeled ILO estimate)' ordinal='5' />
+            <column datatype='real' name='Employment in agriculture, female (% of female employment) (modeled ILO estimate)' ordinal='6' />
+            <column datatype='real' name='Employment in agriculture, male (% of male employment) (modeled ILO estimate)' ordinal='7' />
+            <column datatype='real' name='Employment in industry (% of total employment) (modeled ILO estimate)' ordinal='8' />
+            <column datatype='real' name='Employment in industry, female (% of female employment) (modeled ILO estimate)' ordinal='9' />
+            <column datatype='real' name='Employment in industry, male (% of male employment) (modeled ILO estimate)' ordinal='10' />
+            <column datatype='real' name='Employment in services (% of total employment) (modeled ILO estimate)' ordinal='11' />
+            <column datatype='real' name='Employment in services, female (% of female employment) (modeled ILO estimate)' ordinal='12' />
+            <column datatype='real' name='Employment in services, male (% of male employment) (modeled ILO estimate)' ordinal='13' />
+            <column datatype='real' name='Employment to population ratio, 15+, female (%) (modeled ILO estimate)' ordinal='14' />
+            <column datatype='real' name='Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)' ordinal='15' />
+            <column datatype='real' name='Informal employment, female (% of total non-agricultural employment)' ordinal='16' />
+            <column datatype='real' name='Informal employment, male (% of total non-agricultural employment)' ordinal='17' />
+            <column datatype='real' name='Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)' ordinal='18' />
+            <column datatype='real' name='Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)' ordinal='19' />
+            <column datatype='real' name='Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)' ordinal='20' />
+            <column datatype='real' name='Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)' ordinal='21' />
+            <column datatype='real' name='Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)' ordinal='22' />
+            <column datatype='real' name='Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)' ordinal='23' />
+            <column datatype='real' name='Labor force with advanced education (% of total working-age population with advanced education)' ordinal='24' />
+            <column datatype='real' name='Labor force with advanced education, female (% of female working-age population with advanced education)' ordinal='25' />
+            <column datatype='real' name='Labor force with advanced education, male (% of male working-age population with advanced education)' ordinal='26' />
+            <column datatype='integer' name='Labor force, female' ordinal='27' />
+            <column datatype='real' name='Labor force, female (% of total labor force)' ordinal='28' />
+            <column datatype='integer' name='Labor force, male' ordinal='29' />
+            <column datatype='integer' name='Labor force, total' ordinal='30' />
+            <column datatype='real' name='Literacy rate, adult female (% of females ages 15 and above)' ordinal='31' />
+            <column datatype='real' name='Literacy rate, adult male (% of males ages 15 and above)' ordinal='32' />
+            <column datatype='real' name='Literacy rate, adult total (% of people ages 15 and above)' ordinal='33' />
+            <column datatype='integer' name='Population ages 15-64, female' ordinal='34' />
+            <column datatype='integer' name='Population ages 15-64, male' ordinal='35' />
+            <column datatype='integer' name='Population ages 15-64, total' ordinal='36' />
+            <column datatype='real' name='Ratio of female to male labor force participation rate (%) (modeled ILO estimate)' ordinal='37' />
+            <column datatype='real' name='Ratio of female to male labor force participation rate (%) (national estimate)' ordinal='38' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='excel-direct.0hbmtyf1soh5g910dwg3a1v62n52' name='Data_Wrangled' table='[Data_Wrangled$]' type='table'>
+          <columns gridOrigin='A1:AM833:no:A1:AM833:1' lost='0' outcome='1' processed='21852'>
+            <column datatype='string' name='Country Name' ordinal='0' />
+            <column datatype='datetime' date-parse-format='yyyy' name='Year' ordinal='1' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)' ordinal='2' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)' ordinal='3' />
+            <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)' ordinal='4' />
+            <column datatype='real' name='Employment in agriculture (% of total employment) (modeled ILO estimate)' ordinal='5' />
+            <column datatype='real' name='Employment in agriculture, female (% of female employment) (modeled ILO estimate)' ordinal='6' />
+            <column datatype='real' name='Employment in agriculture, male (% of male employment) (modeled ILO estimate)' ordinal='7' />
+            <column datatype='real' name='Employment in industry (% of total employment) (modeled ILO estimate)' ordinal='8' />
+            <column datatype='real' name='Employment in industry, female (% of female employment) (modeled ILO estimate)' ordinal='9' />
+            <column datatype='real' name='Employment in industry, male (% of male employment) (modeled ILO estimate)' ordinal='10' />
+            <column datatype='real' name='Employment in services (% of total employment) (modeled ILO estimate)' ordinal='11' />
+            <column datatype='real' name='Employment in services, female (% of female employment) (modeled ILO estimate)' ordinal='12' />
+            <column datatype='real' name='Employment in services, male (% of male employment) (modeled ILO estimate)' ordinal='13' />
+            <column datatype='real' name='Employment to population ratio, 15+, female (%) (modeled ILO estimate)' ordinal='14' />
+            <column datatype='real' name='Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)' ordinal='15' />
+            <column datatype='real' name='Informal employment, female (% of total non-agricultural employment)' ordinal='16' />
+            <column datatype='real' name='Informal employment, male (% of total non-agricultural employment)' ordinal='17' />
+            <column datatype='real' name='Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)' ordinal='18' />
+            <column datatype='real' name='Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)' ordinal='19' />
+            <column datatype='real' name='Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)' ordinal='20' />
+            <column datatype='real' name='Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)' ordinal='21' />
+            <column datatype='real' name='Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)' ordinal='22' />
+            <column datatype='real' name='Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)' ordinal='23' />
+            <column datatype='real' name='Labor force with advanced education (% of total working-age population with advanced education)' ordinal='24' />
+            <column datatype='real' name='Labor force with advanced education, female (% of female working-age population with advanced education)' ordinal='25' />
+            <column datatype='real' name='Labor force with advanced education, male (% of male working-age population with advanced education)' ordinal='26' />
+            <column datatype='integer' name='Labor force, female' ordinal='27' />
+            <column datatype='real' name='Labor force, female (% of total labor force)' ordinal='28' />
+            <column datatype='integer' name='Labor force, male' ordinal='29' />
+            <column datatype='integer' name='Labor force, total' ordinal='30' />
+            <column datatype='real' name='Literacy rate, adult female (% of females ages 15 and above)' ordinal='31' />
+            <column datatype='real' name='Literacy rate, adult male (% of males ages 15 and above)' ordinal='32' />
+            <column datatype='real' name='Literacy rate, adult total (% of people ages 15 and above)' ordinal='33' />
+            <column datatype='integer' name='Population ages 15-64, female' ordinal='34' />
+            <column datatype='integer' name='Population ages 15-64, male' ordinal='35' />
+            <column datatype='integer' name='Population ages 15-64, total' ordinal='36' />
+            <column datatype='real' name='Ratio of female to male labor force participation rate (%) (modeled ILO estimate)' ordinal='37' />
+            <column datatype='real' name='Ratio of female to male labor force participation rate (%) (national estimate)' ordinal='38' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>2</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:AM833:no:A1:AM833:1&quot;</attribute>
+              <attribute datatype='integer' name='lost'>0</attribute>
+              <attribute datatype='integer' name='outcome'>1</attribute>
+              <attribute datatype='integer' name='processed'>21852</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Country Name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[Country Name]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Country Name</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Year</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[Year]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Year</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LEN_RUS_S2' />
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in agriculture (% of total employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in agriculture (% of total employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in agriculture (% of total employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in agriculture, female (% of female employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in agriculture, female (% of female employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in agriculture, female (% of female employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in agriculture, male (% of male employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in agriculture, male (% of male employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in agriculture, male (% of male employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in industry (% of total employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in industry (% of total employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in industry (% of total employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in industry, female (% of female employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in industry, female (% of female employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in industry, female (% of female employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in industry, male (% of male employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in industry, male (% of male employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in industry, male (% of male employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in services (% of total employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in services (% of total employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in services (% of total employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in services, female (% of female employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in services, female (% of female employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in services, female (% of female employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment in services, male (% of male employment) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment in services, male (% of male employment) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment in services, male (% of male employment) (modeled ILO estimate)</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Employment to population ratio, 15+, female (%) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Employment to population ratio, 15+, female (%) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Employment to population ratio, 15+, female (%) (modeled ILO estimate)</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Informal employment, female (% of total non-agricultural employment)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Informal employment, female (% of total non-agricultural employment)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Informal employment, female (% of total non-agricultural employment)</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Informal employment, male (% of total non-agricultural employment)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Informal employment, male (% of total non-agricultural employment)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Informal employment, male (% of total non-agricultural employment)</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force with advanced education (% of total working-age population with advanced education)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force with advanced education (% of total working-age population with advanced education)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force with advanced education (% of total working-age population with advanced education)</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force with advanced education, female (% of female working-age population with advanced education)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force with advanced education, female (% of female working-age population with advanced education)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force with advanced education, female (% of female working-age population with advanced education)</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force with advanced education, male (% of male working-age population with advanced education)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force with advanced education, male (% of male working-age population with advanced education)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force with advanced education, male (% of male working-age population with advanced education)</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force, female</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Labor force, female]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force, female</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force, female (% of total labor force)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Labor force, female (% of total labor force)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force, female (% of total labor force)</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force, male</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Labor force, male]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force, male</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Labor force, total</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Labor force, total]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Labor force, total</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Literacy rate, adult female (% of females ages 15 and above)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Literacy rate, adult female (% of females ages 15 and above)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Literacy rate, adult female (% of females ages 15 and above)</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Literacy rate, adult male (% of males ages 15 and above)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Literacy rate, adult male (% of males ages 15 and above)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Literacy rate, adult male (% of males ages 15 and above)</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Literacy rate, adult total (% of people ages 15 and above)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Literacy rate, adult total (% of people ages 15 and above)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Literacy rate, adult total (% of people ages 15 and above)</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population ages 15-64, female</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population ages 15-64, female]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Population ages 15-64, female</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population ages 15-64, male</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population ages 15-64, male]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Population ages 15-64, male</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Population ages 15-64, total</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[Population ages 15-64, total]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Population ages 15-64, total</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ratio of female to male labor force participation rate (%) (modeled ILO estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Ratio of female to male labor force participation rate (%) (modeled ILO estimate)</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>Ratio of female to male labor force participation rate (%) (national estimate)</remote-name>
+            <remote-type>5</remote-type>
+            <local-name>[Ratio of female to male labor force participation rate (%) (national estimate)]</local-name>
+            <parent-name>[Data_Wrangled]</parent-name>
+            <remote-alias>Ratio of female to male labor force participation rate (%) (national estimate)</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>real</local-type>
+            <aggregation>Sum</aggregation>
+            <precision>15</precision>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;R8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='RatioWomenPer_MenPer' datatype='real' name='[Calculation_3762616792834240512]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]/[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' />
+      </column>
+      <column caption='Country' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+      <column datatype='datetime' default-format='*yyyy' name='[Year]' role='dimension' type='quantitative' />
+      <_.fcp.ObjectModelTableType.true...column caption='Data_Wrangled' datatype='table' name='[__tableau_internal_object_id__].[Data!Wrangled_7748B6499754409081DFC1D4D223ED8D]' role='measure' type='quantitative' />
+      <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <default-sorts>
+        <manual-sort column='[none:Forecast Indicator:nk]' direction='ASC'>
+          <dictionary>
+            <bucket>&quot;Actual&quot;</bucket>
+            <bucket>&quot;Estimate&quot;</bucket>
+          </dictionary>
+        </manual-sort>
+      </default-sorts>
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='Country Name' />
+        <field-sort-custom-order field='Year' />
+        <field-sort-custom-order field='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)' />
+        <field-sort-custom-order field='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)' />
+        <field-sort-custom-order field='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)' />
+        <field-sort-custom-order field='Employment in agriculture (% of total employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in agriculture, female (% of female employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in agriculture, male (% of male employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in industry (% of total employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in industry, female (% of female employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in industry, male (% of male employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in services (% of total employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in services, female (% of female employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment in services, male (% of male employment) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Employment to population ratio, 15+, female (%) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)' />
+        <field-sort-custom-order field='Informal employment, female (% of total non-agricultural employment)' />
+        <field-sort-custom-order field='Informal employment, male (% of total non-agricultural employment)' />
+        <field-sort-custom-order field='Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Labor force with advanced education (% of total working-age population with advanced education)' />
+        <field-sort-custom-order field='Labor force with advanced education, female (% of female working-age population with advanced education)' />
+        <field-sort-custom-order field='Labor force with advanced education, male (% of male working-age population with advanced education)' />
+        <field-sort-custom-order field='Labor force, female' />
+        <field-sort-custom-order field='Labor force, female (% of total labor force)' />
+        <field-sort-custom-order field='Calculation_3762616792834240512' />
+        <field-sort-custom-order field='Labor force, male' />
+        <field-sort-custom-order field='Labor force, total' />
+        <field-sort-custom-order field='Literacy rate, adult female (% of females ages 15 and above)' />
+        <field-sort-custom-order field='Literacy rate, adult male (% of males ages 15 and above)' />
+        <field-sort-custom-order field='Literacy rate, adult total (% of people ages 15 and above)' />
+        <field-sort-custom-order field='Population ages 15-64, female' />
+        <field-sort-custom-order field='Population ages 15-64, male' />
+        <field-sort-custom-order field='Population ages 15-64, total' />
+        <field-sort-custom-order field='Ratio of female to male labor force participation rate (%) (modeled ILO estimate)' />
+        <field-sort-custom-order field='Ratio of female to male labor force participation rate (%) (national estimate)' />
+      </field-sort-info>
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='Data_Wrangled' id='Data!Wrangled_7748B6499754409081DFC1D4D223ED8D'>
+            <properties context=''>
+              <relation connection='excel-direct.0hbmtyf1soh5g910dwg3a1v62n52' name='Data_Wrangled' table='[Data_Wrangled$]' type='table'>
+                <columns gridOrigin='A1:AM833:no:A1:AM833:1' lost='0' outcome='1' processed='21852'>
+                  <column datatype='string' name='Country Name' ordinal='0' />
+                  <column datatype='datetime' date-parse-format='yyyy' name='Year' ordinal='1' />
+                  <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, female (%) (cumulative)' ordinal='2' />
+                  <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, male (%) (cumulative)' ordinal='3' />
+                  <column datatype='real' name='Educational attainment, at least Bachelor&apos;s or equivalent, population 25+, total (%) (cumulative)' ordinal='4' />
+                  <column datatype='real' name='Employment in agriculture (% of total employment) (modeled ILO estimate)' ordinal='5' />
+                  <column datatype='real' name='Employment in agriculture, female (% of female employment) (modeled ILO estimate)' ordinal='6' />
+                  <column datatype='real' name='Employment in agriculture, male (% of male employment) (modeled ILO estimate)' ordinal='7' />
+                  <column datatype='real' name='Employment in industry (% of total employment) (modeled ILO estimate)' ordinal='8' />
+                  <column datatype='real' name='Employment in industry, female (% of female employment) (modeled ILO estimate)' ordinal='9' />
+                  <column datatype='real' name='Employment in industry, male (% of male employment) (modeled ILO estimate)' ordinal='10' />
+                  <column datatype='real' name='Employment in services (% of total employment) (modeled ILO estimate)' ordinal='11' />
+                  <column datatype='real' name='Employment in services, female (% of female employment) (modeled ILO estimate)' ordinal='12' />
+                  <column datatype='real' name='Employment in services, male (% of male employment) (modeled ILO estimate)' ordinal='13' />
+                  <column datatype='real' name='Employment to population ratio, 15+, female (%) (modeled ILO estimate)' ordinal='14' />
+                  <column datatype='real' name='Female share of graduates in Agriculture, Forestry, Fisheries and Veterinary programmes, tertiary (%)' ordinal='15' />
+                  <column datatype='real' name='Informal employment, female (% of total non-agricultural employment)' ordinal='16' />
+                  <column datatype='real' name='Informal employment, male (% of total non-agricultural employment)' ordinal='17' />
+                  <column datatype='real' name='Labor force participation rate, female (% of female population ages 15+) (modeled ILO estimate)' ordinal='18' />
+                  <column datatype='real' name='Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)' ordinal='19' />
+                  <column datatype='real' name='Labor force participation rate, male (% of male population ages 15+) (modeled ILO estimate)' ordinal='20' />
+                  <column datatype='real' name='Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)' ordinal='21' />
+                  <column datatype='real' name='Labor force participation rate, total (% of total population ages 15+) (modeled ILO estimate)' ordinal='22' />
+                  <column datatype='real' name='Labor force participation rate, total (% of total population ages 15-64) (modeled ILO estimate)' ordinal='23' />
+                  <column datatype='real' name='Labor force with advanced education (% of total working-age population with advanced education)' ordinal='24' />
+                  <column datatype='real' name='Labor force with advanced education, female (% of female working-age population with advanced education)' ordinal='25' />
+                  <column datatype='real' name='Labor force with advanced education, male (% of male working-age population with advanced education)' ordinal='26' />
+                  <column datatype='integer' name='Labor force, female' ordinal='27' />
+                  <column datatype='real' name='Labor force, female (% of total labor force)' ordinal='28' />
+                  <column datatype='integer' name='Labor force, male' ordinal='29' />
+                  <column datatype='integer' name='Labor force, total' ordinal='30' />
+                  <column datatype='real' name='Literacy rate, adult female (% of females ages 15 and above)' ordinal='31' />
+                  <column datatype='real' name='Literacy rate, adult male (% of males ages 15 and above)' ordinal='32' />
+                  <column datatype='real' name='Literacy rate, adult total (% of people ages 15 and above)' ordinal='33' />
+                  <column datatype='integer' name='Population ages 15-64, female' ordinal='34' />
+                  <column datatype='integer' name='Population ages 15-64, male' ordinal='35' />
+                  <column datatype='integer' name='Population ages 15-64, total' ordinal='36' />
+                  <column datatype='real' name='Ratio of female to male labor force participation rate (%) (modeled ILO estimate)' ordinal='37' />
+                  <column datatype='real' name='Ratio of female to male labor force participation rate (%) (national estimate)' ordinal='38' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='RatioParticipation'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Data_Wrangled' name='federated.1029trx04x9qsi1186f3m0ezmxqv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1029trx04x9qsi1186f3m0ezmxqv'>
+            <column caption='Country' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='datetime' default-format='*yyyy' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]' derivation='Sum' forecast-column-base='[sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]' forecast-column-type='forecast-value' name='[fVal:sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]' derivation='Sum' name='[sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year-Trunc' name='[tyr:Year:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]'>
+            <groupfilter function='level-members' level='[none:Country Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Forecast Indicator:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk] * [federated.1029trx04x9qsi1186f3m0ezmxqv].[fVal:sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk])</rows>
+        <cols>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-zero' ignore-last='0' model-type='custom' range-periods='Year-Trunc' range-size='10' range-type='next' season-type='ets-none' show-prediction-bands='true' trend-type='ets-additive' />
+      </table>
+      <simple-id uuid='{A693D4B7-2EE0-4CC9-AC2D-C6F082A8644B}' />
+    </worksheet>
+    <worksheet name='Self Calculated'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Data_Wrangled' name='federated.1029trx04x9qsi1186f3m0ezmxqv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1029trx04x9qsi1186f3m0ezmxqv'>
+            <column caption='RatioWomenPer_MenPer' datatype='real' name='[Calculation_3762616792834240512]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]/[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' />
+            </column>
+            <column caption='Country' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='datetime' default-format='*yyyy' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Calculation_3762616792834240512]' derivation='Sum' forecast-column-base='[sum:Calculation_3762616792834240512:qk]' forecast-column-type='forecast-value' name='[fVal:sum:Calculation_3762616792834240512:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Forecast Indicator]' derivation='None' forecast-column-base='[Forecast Indicator]' forecast-column-type='forecast-indicator' name='[none:Forecast Indicator:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3762616792834240512]' derivation='Sum' name='[sum:Calculation_3762616792834240512:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year-Trunc' name='[tyr:Year:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]'>
+            <groupfilter function='level-members' level='[none:Country Name:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Forecast Indicator:nk]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk] * [federated.1029trx04x9qsi1186f3m0ezmxqv].[fVal:sum:Calculation_3762616792834240512:qk])</rows>
+        <cols>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</cols>
+        <forecast-specification auto-forecast-agg='true' band-confidence-level='95.000000' enabled='true' fill-type='fill-zero' ignore-last='0' model-type='custom' range-periods='Year-Trunc' range-size='10' range-type='next' season-type='ets-none' show-prediction-bands='true' trend-type='ets-additive' />
+      </table>
+      <simple-id uuid='{13D84DAE-9A16-4048-8A8C-6E3D764E0C4C}' />
+    </worksheet>
+    <worksheet name='Sheet 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Data_Wrangled' name='federated.1029trx04x9qsi1186f3m0ezmxqv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1029trx04x9qsi1186f3m0ezmxqv'>
+            <column caption='RatioWomenPer_MenPer' datatype='real' name='[Calculation_3762616792834240512]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]/[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' />
+            </column>
+            <column caption='Country' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='datetime' default-format='*yyyy' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_3762616792834240512]' derivation='Sum' name='[sum:Calculation_3762616792834240512:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Ratio of female to male labor force participation rate (%) (modeled ILO estimate)]' derivation='Sum' name='[sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year-Trunc' name='[tyr:Year:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Calculation_3762616792834240512:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows>([federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk] * ([federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Calculation_3762616792834240512:qk] + [federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Ratio of female to male labor force participation rate (%) (modeled ILO estimate):qk]))</rows>
+        <cols>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</cols>
+      </table>
+      <simple-id uuid='{1DC97F52-818F-49BD-BCA8-0903CEC59A42}' />
+    </worksheet>
+    <worksheet name='Sheet 4'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Data_Wrangled' name='federated.1029trx04x9qsi1186f3m0ezmxqv' />
+          </datasources>
+          <datasource-dependencies datasource='federated.1029trx04x9qsi1186f3m0ezmxqv'>
+            <column caption='Country' datatype='string' name='[Country Name]' role='dimension' semantic-role='[Country].[ISO3166_2]' type='nominal' />
+            <column datatype='real' name='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='real' name='[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' role='measure' type='quantitative' />
+            <column datatype='datetime' default-format='*yyyy' name='[Year]' role='dimension' type='quantitative' />
+            <column-instance column='[Country Name]' derivation='None' name='[none:Country Name:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate)]' derivation='Sum' name='[sum:Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate)]' derivation='Sum' name='[sum:Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate):qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Year]' derivation='Year-Trunc' name='[tyr:Year:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]'>
+            <groupfilter function='member' level='[none:Country Name:nk]' member='&quot;Afghanistan&quot;' user:ui-domain='database' user:ui-enumeration='inclusive' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <encoding attr='space' class='0' field='[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate):qk]' field-type='quantitative' fold='true' scope='rows' synchronized='true' type='space' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate):qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.1029trx04x9qsi1186f3m0ezmxqv].[:Measure Names]' />
+            </encodings>
+          </pane>
+        </panes>
+        <rows>([federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk] * ([federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, female (% of female population ages 15-64) (modeled ILO estimate):qk] + [federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate):qk]))</rows>
+        <cols>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</cols>
+      </table>
+      <simple-id uuid='{A952A80A-5859-43A5-B3E3-8028A1B17ECD}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' name='RatioParticipation'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='dropdown' param='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</field>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{56A66610-800C-4F3F-87DD-1DFFD9A22FF1}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Self Calculated'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card mode='dropdown' param='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]' type='filter' />
+            <card pane-specification-id='0' param='[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Forecast Indicator:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</field>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{51BFFAE1-3A74-408B-AAE7-04490533AB3B}' />
+    </window>
+    <window class='worksheet' name='Sheet 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</field>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{3D49E736-2341-4FB0-A8E2-9B93F78194B2}' />
+    </window>
+    <window class='worksheet' name='Sheet 4'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card pane-specification-id='1' param='[federated.1029trx04x9qsi1186f3m0ezmxqv].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <selection-collection>
+          <node-selection select-tuples='false'>
+            <oriented-node-reference orientation='vertical'>
+              <node-reference>
+                <fields>
+                  <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</field>
+                </fields>
+                <multibucket>
+                  <bucket>&quot;Afghanistan&quot;</bucket>
+                </multibucket>
+                <axis>[federated.1029trx04x9qsi1186f3m0ezmxqv].[sum:Labor force participation rate, male (% of male population ages 15-64) (modeled ILO estimate):qk]</axis>
+              </node-reference>
+              <page-reference />
+            </oriented-node-reference>
+          </node-selection>
+        </selection-collection>
+        <highlight>
+          <color-one-way>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[none:Country Name:nk]</field>
+            <field>[federated.1029trx04x9qsi1186f3m0ezmxqv].[tyr:Year:qk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{00063124-37B1-425B-8EAF-72BD8E1373BC}' />
+    </window>
+  </windows>
+  <thumbnails>
+    <thumbnail height='192' name='RatioParticipation' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Self Calculated' width='192'>
+      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
+      AElFTkSuQmCC
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 3' width='192'>
+      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
+    </thumbnail>
+    <thumbnail height='192' name='Sheet 4' width='192'>
+      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
+    </thumbnail>
+  </thumbnails>
+</workbook>
