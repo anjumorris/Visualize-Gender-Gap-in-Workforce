@@ -1,5 +1,33 @@
+function change(map_type) {
+  $('#map_title').text(map_type.label);
+  $('#' + (map_type.value == 'case' ? 'all_map' : 'case_map')).hide();
+  $('#' + map_type.value + '_map').show();
+  // svg.select('#PLACEHOLDER')
+  //     .transition()
+  //     .duration(600)
+  //     .text(map_type.label)
+  //     .attr('opacity', region.target.checked ? 1 : 0)
+}
+
+/* map slider values */
+var values = [];
+for (var y = 1990; y <= 2020; y++) {
+  values.push(y);
+}
+
+/* init widget */
+$("#slider").slider({
+    value: 1990,
+    min: 1990,
+    max: 2020,
+    step: 1,
+    slide: function(event, ui) {
+      $("#slider_year span").text(ui.value);
+    }
+});
+
 // The svg
-  var svg = d3.select("svg"),
+  var svg = d3.select("#all_map"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
   
@@ -41,8 +69,7 @@
         .transition()
         .duration(200)
         .style("opacity", .8)
-        .style('stroke', 'white')
-        d3.select(this)
+        d3.selectAll('.Country')
         .style('stroke', 'white')
     }
   
@@ -70,7 +97,24 @@
 
     var labels = d3.select("#view_picker")
       .selectAll()
-      .data(["All Asia", "Case Studies"])
+      .data([
+        { label: "All Asia", value: "all" },
+        { label: "Case Studies", value: "case" }
+      ])
       .enter()
       .append('label');
+
+    labels.append("input")
+      .attr("type", "radio")
+      .attr('id', function(d) { return 'option_id_' + d.value; })
+      .attr("name", 'map_option')
+      .attr("value", function(d) { return d.value; })
+      // .style('accent-color', function(d) { return colors[d.toLowerCase()]; })
+      .on("change", change)
+
+    d3.select('#option_id_all')
+      .attr('checked', true)
+
+    labels.append('span')
+      .text(function(d) { return d.label; })
   }
