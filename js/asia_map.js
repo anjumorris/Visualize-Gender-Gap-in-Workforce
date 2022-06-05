@@ -19,6 +19,10 @@ document.body.addEventListener('click', function(e) {
       .transition()
       .duration(200)
       .style('opacity', 0)
+    d3.select('.map_wrapper')
+      .transition()
+      .duration(500)
+      .style('width', '780px')
   }
 }, true); 
 
@@ -64,6 +68,8 @@ function countryClick(d) {
     .duration(1000)
     .style('opacity', 1)
     // $('#right_area').show();
+  d3.select('.map_wrapper')
+    .style('width', '480px')
 }
 
 /* map slider values */
