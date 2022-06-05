@@ -147,7 +147,7 @@
                     .selectAll("stop")
                     .data([
                         { offset: "0%", color: tokyo45 },
-                        { offset: "100%", color: tokyo95 }
+                        { offset: "100%", color: tokyo90 }
                     ])
                     .enter().append("stop")
                     .attr("offset", function (d) { return d.offset; })
@@ -156,7 +156,7 @@
                 // Show confidence interval
                 svgLine.append("path")
                     .datum(data.filter(function (d) { return (d.country == selectedGroup && d.year >= forcastStart) }))
-                    .attr("fill", paris95)
+                    .attr("fill", tokyo95)
                     .attr("stroke", "none")
                     .attr("fill-opacity",0.5)
                     .attr("d", d3.area()
@@ -177,7 +177,7 @@
                     .style("fill", "none");
 
                 // Forcast divider line
-              svgLine.append('line')
+                svgLine.append('line')
                     .attr('x1', x(forcastStart))
                     .attr('x2', x(forcastStart))
                     .attr('y1', y(0))
@@ -185,9 +185,24 @@
                     .attr('stroke', london20)
                     .attr('stroke-width', 2);
 
+                svgLine.append("text") //Forecast
+                    .text("Forecast ---->")
+                    .attr("x", x(forcastStart) + 15)
+                    .attr("y", y(0.05))
+                    .attr("text-anchor", "start")
+                    .attr("font-size", axisFontSize)
+                    .attr("font-family", "lato")
+                    .style('fill', london20);
+                svgLine.append("text") //History
+                    .text("<---- History")
+                    .attr("x", x(forcastStart) -15)
+                    .attr("y", y(0.05))
+                    .attr("text-anchor", "end")
+                    .attr("font-size", axisFontSize)
+                    .attr("font-family", "lato")
+                    .style('fill', london20);
 
-
-            }
+            
 
             // When the button is changed, run the updateChart function
             d3.select("#selectButton").on("change", function (event, d) {
@@ -196,6 +211,7 @@
                 // run the updateChart function with this selected option
                 update(selectedOption)
             })
+        }//
 
         })
 
