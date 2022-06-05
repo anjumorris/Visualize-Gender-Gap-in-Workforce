@@ -1,6 +1,19 @@
 
-#case_map {
-    display: none;
+body {
+    height: 100vh;
+}
+
+.shared-row {
+    display: inline-block;
+}
+
+.map_wrapper {
+    width: 480px;
+}
+
+#case_map, #right_area {
+    /* display: none; */
+    opacity: 0;
 }
 
 #view_picker input {
@@ -9,6 +22,10 @@
 
 #view_picker label:first-of-type {
     margin-right: 40px;
+}
+
+#slider_year {
+    max-width: 480px;
 }
 
 .slidecontainer {

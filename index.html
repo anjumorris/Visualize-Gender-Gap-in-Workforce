@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <!-- Load d3.js -->
-    <script src="http://d3js.org/d3.v4.js"></script>
+    <!-- <script src="http://d3js.org/d3.v4.js"></script> -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -20,24 +21,27 @@
     <h4>Anjali Sebastian, Kruta Arvind Prabhu, Ulysses Lin, Zachary Jeffreys</h4>
     <div class="container-fluid">
       <h2 id="map_title">All Asia</h2>
-      <svg id="all_map" width="1000" height="700"></svg>
-      <svg id="case_map" width="1000" height="700"></svg>
-      <div id="view_picker_wrapper">
-        <form id="view_picker"></form>
-      </div>
-      <div class="slidecontainer">
-        <p id="slider_year">Year: <span>1990</span></p>
-        <div id="slider"></div>
-      </div>
-      <!-- <div class="row">
-        <div class="col-xxl-7" id="main">
+      <!-- <div class="row"> -->
+        <div class="col-xxl-7 shared-row map_wrapper">
+          <svg id="all_map" width="1000" height="700"></svg>
+          <!-- <svg id="case_map" width="1000" height="700"></svg> -->
         </div>
-        <div id="right_sidebar" class="col-xxl-5">
-          <div id="svgLine"></div>
-          <div id="tooltip_wrapper"></div>
+        <div class="col-xxl-5 shared-row">
+          <div id="right_area">
+            <h2 id="country_clicked"></h2>
+            <div id="regressionChart"></div>
+          </div>
         </div>
-      </div> -->
+        <div id="view_picker_wrapper">
+          <form id="view_picker"></form>
+        </div>
+        <div class="slidecontainer">
+          <p id="slider_year">Year: <span>1990</span></p>
+          <div id="slider"></div>
+        </div>
+      <!-- </div> -->
     </div>
     <script src="/js/asia_map.js"></script>
+    <script src="/js/regression.js"></script>
   </body>
 </html>

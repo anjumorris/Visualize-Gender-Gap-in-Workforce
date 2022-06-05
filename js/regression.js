@@ -34,8 +34,8 @@ d3.select('h3')
 
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 30, left: 60 },
-    width = 1200 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 600 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svgLine = d3.select("#regressionChart")
@@ -73,7 +73,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
 
     update(defaultCountry);
     // A function that update the chart
-    function update(selectedGroup) {
+    function update(selected_country) {
 
         // Clean previous written stuff
         svgLine.selectAll("*").remove();
@@ -125,7 +125,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
 
         // Show confidence interval
         svgLine.append("path")
-            .datum(data.filter(function (d) { return (d.country == selectedGroup && d.year >= forcastStart) }))
+            .datum(data.filter(function (d) { return (d.country == selected_country && d.year >= forcastStart) }))
             .attr("fill", tokyo95)
             .attr("stroke", "none")
             .attr("fill-opacity",0.5)
@@ -137,7 +137,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
         
         // Show Line 
         svgLine.append("path")
-            .datum(data.filter(function (d) { return d.country == selectedGroup }))
+            .datum(data.filter(function (d) { return d.country == selected_country }))
             .attr("d", d3.line()
                 .x(function (d) { return x(d.year) })
                 .y(function (d) { return y(+d.actualEstimate) })
@@ -172,15 +172,11 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
             .attr("font-family", "lato")
             .style('fill', london20);
 
-    
-
-    // When the button is changed, run the updateChart function
-    d3.select("#selectButton").on("change", function (event, d) {
-        // recover the option that has been chosen
-        const selectedOption = d3.select(this).property("value")
-        // run the updateChart function with this selected option
-        update(selectedOption)
+    // When a country on the map is clicked, update line chart
+    d3.selectAll(".country").on("click", function (event, d) {
+        update(d.properties.name);
+        countryClick(d);
     })
-}//
+}
 
 })

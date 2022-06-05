@@ -5,25 +5,65 @@ document.body.addEventListener('click', function(e) {
 
   if (!triggersEvent) {
     d3.selectAll('.country')
-      .style('opacity', 0.8)
+      .style('opacity', 0.7)
       .style('stroke', 'white')
+      .style('stroke-width', 1)
     svg.transition()
       .duration(500)
       .attr('transform', 'translate(0, 0) scale(1)')
     country_clicked = false;
     minimized_map = false;
+    country_clicked_map_id = '';
+    country_clicked_name = '';
+    d3.select('#right_area')
+      .transition()
+      .duration(200)
+      .style('opacity', 0)
   }
 }, true); 
 
-function change(map_type) {
-  $('#map_title').text(map_type.label);
-  $('#' + (map_type.value == 'case' ? 'all_map' : 'case_map')).hide();
-  $('#' + map_type.value + '_map').show();
+function changeMapType(map_type) {
+  $('#map_title').text(map_type.target.__data__.label);
+  $('#' + (map_type.target.__data__.value == 'case' ? 'all_map' : 'case_map')).hide();
+  $('#' + map_type.target.__data__.value + '_map').show();
   // svg.select('#PLACEHOLDER')
   //     .transition()
   //     .duration(600)
   //     .text(map_type.label)
   //     .attr('opacity', region.target.checked ? 1 : 0)
+}
+
+function countryClick(d) {
+  if (country_clicked_map_id == 'map_' + d.id) {
+    return;
+  }
+  country_clicked = true;
+  minimized_map = true;
+  country_clicked_map_id = 'map_' + d.id;
+  country_clicked_name = d.properties.name;
+  d3.select('#country_clicked')
+    .text(country_clicked_name)
+  d3.selectAll('.country:not(#' + country_clicked_map_id + ')')
+    .transition()
+    .duration(200)
+    .style('opacity', 0.7)
+    .style('stroke', 'white')
+    .style('stroke-width', 1)
+  d3.select('#' + country_clicked_map_id)
+    .transition()
+    .duration(200)
+    .style('opacity', 1)
+    .style('stroke', 'black')
+    .style('stroke-width', 2)
+  svg.transition()
+    .duration(500)
+    .attr('width', 900)
+    .attr('transform', 'translate(-200, 0) scale(0.6)')
+  d3.select('#right_area')
+    .transition()
+    .duration(1000)
+    .style('opacity', 1)
+    // $('#right_area').show();
 }
 
 /* map slider values */
@@ -45,12 +85,11 @@ $("#slider").slider({
 
   var country_clicked = false;
   var minimized_map = false;
+  var country_clicked_map_id = '';
   var country_clicked_name = '';
 
 // The svg
-  var svg = d3.select("#all_map"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+  var svg = d3.select("#all_map");;
   
   // Map and projection
   var path = d3.geoPath();
@@ -58,27 +97,15 @@ $("#slider").slider({
     .scale(500)
     .center([0,20])
     .translate([-500, 400]);
-  
-  // Data and color scale
-  var data = d3.map();
-  var colorScale = d3.scaleThreshold()
-    .domain([100000, 1000000, 10000000, 30000000, 100000000, 500000000])
-    .range(d3.schemeBlues[7]);
-  
-  // Load external data and boot
-  d3.queue()
-    .defer(d3.json, "altered_world.geojson")
-    .defer(d3.csv, "/../data/world_populations.csv", function(d) { data.set(d.code, +d.pop); })
-    .await(ready);
-  
-  function ready(error, topo) {
+
+  d3.json('altered_world.geojson').then(function(topo) {
   
     let mouseOver = function(d) {
-      var to_select = country_clicked_name ? '.country:not(#' + country_clicked_name + ')' : '.country';
+      var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country';
       d3.selectAll(to_select)
         .transition()
         .duration(200)
-        .style("opacity", .5)
+        .style("opacity", 0.4)
       d3.select(this)
         .transition()
         .duration(200)
@@ -87,33 +114,11 @@ $("#slider").slider({
   
     let mouseLeave = function(d) {
       // minimized_map && 
-      var to_select = country_clicked_name ? '.country:not(#' + country_clicked_name + ')' : '.country';
+      var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country';
       d3.selectAll(to_select)
         .transition()
         .duration(200)
-        .style('opacity', .8)
-    }
-
-    var countryClick = function(i, scene) {
-      if (country_clicked_name == 'map_' + this.__data__.id) {
-        return;
-      }
-      country_clicked = true;
-      minimized_map = true;
-      country_clicked_name = 'map_' + this.__data__.id;
-      d3.selectAll('.country:not(#' + country_clicked_name + ')')
-        .transition()
-        .duration(200)
-        .style('opacity', .8)
-        .style('stroke', 'white')
-      d3.select(this)
-        .transition()
-        .duration(200)
-        .style('opacity', 1)
-        .style('stroke', 'black')
-      svg.transition()
-        .duration(500)
-        .attr('transform', 'translate(-200, 0) scale(0.6)')
+        .style('opacity', 0.7)
     }
   
     // Draw the map
@@ -127,19 +132,18 @@ $("#slider").slider({
       .attr("d", d3.geoPath()
         .projection(projection)
       )
-      // set the color of each country
+      // TODO: FILL COUNTRIES WITH DOTS
       .attr("fill", function (d) {
-        d.total = data.get(d.id) || 0;
-        return colorScale(d.total);
+        return '#F97A1F';
       })
       .style("stroke", "white")
       .style('stroke-width', 1)
       .attr("class", function(d){ return "country" } )
       .attr('id', function(d){ return 'map_' + d.id; } )
-      .style("opacity", .8)
+      .style("opacity", 0.7)
       .on("mouseover", mouseOver )
       .on("mouseleave", mouseLeave )
-      .on('click', countryClick)
+      // .on('click', countryClick)
 
     var labels = d3.select("#view_picker")
       .selectAll()
@@ -156,14 +160,14 @@ $("#slider").slider({
       .attr("name", 'map_option')
       .attr("value", function(d) { return d.value; })
       // .style('accent-color', function(d) { return colors[d.toLowerCase()]; })
-      .on("change", change)
+      .on("change", changeMapType)
 
     d3.select('#option_id_all')
       .attr('checked', true)
 
     labels.append('span')
       .text(function(d) { return d.label; })
-  }
+  })
 
   
 
