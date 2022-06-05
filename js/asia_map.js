@@ -40,7 +40,7 @@ function countryClick(d) {
   country_clicked = true;
   minimized_map = true;
   country_clicked_map_id = 'map_' + d.id;
-  country_clicked_name = d.properties.name;
+  country_clicked_name = d.properties.name || d.properties.ADMIN;
   d3.select('#country_clicked')
     .text(country_clicked_name)
   d3.selectAll('.country:not(#' + country_clicked_map_id + ')')
