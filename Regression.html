@@ -12,6 +12,7 @@
 
 <body>
   <h1>Regression Chart</h1>
+  <h3>Country X</h3>
   
   <br>
     <!-- Initialize a select button -->
@@ -19,20 +20,39 @@
 
   <!-- Main div containing the visual-->
 
-  <div id="regression_chart"></div>
+  <div id="regressionChart"></div>
 
   
-  <h3>Country X</h3>
+  
   
   <!--D3 starts here-->
   <script>
+
+// Color Palette
+var basegrey = "#505050";
+
+//Default settings
+const timeFormatter ="%Y"
+defaultCountry = "Afghanistan"
+
+
+// Text styling 
+d3.select('h1')
+  .style('color', 'black')
+  .style("font-family", "lato");
+
+d3.select('h3')
+  .style('color', 'black')
+  .style("font-family", "lato");
+  
+
  // set the dimensions and margins of the graph
     const margin = { top: 10, right: 30, bottom: 30, left: 60 },
-        width = 460 - margin.left - margin.right,
-        height = 400 - margin.top - margin.bottom;
+        width = 1200 - margin.left - margin.right,
+        height = 700 - margin.top - margin.bottom;
 
     // append the svg object to the body of the page
-    const svg = d3.select("#regression_chart")
+    const svgLine = d3.select("#regressionChart")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -40,11 +60,16 @@
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
     //Read the data
-    d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/5_OneCatSevNumOrdered.csv").then(function (data) {
+    d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regressionData/forecastingRough.csv", function (d) {
+        return {
+            country: d.country, year: d3.timeParse(timeFormatter)(d.year), actualEstimate: d.actualEstimate,
+            upperInterval : d.upperInterval, lowerInterval :d.lowerInterval
+        }
+    }).then(function (data) {
 
         // List of groups (here I have one group per column)
-        const allGroup = new Set(data.map(d => d.name))
-
+        const allGroup = new Set(data.map(d => d.country))
+        //var allGroup = d.country;
         // add the options to the button
         d3.select("#selectButton")
             .selectAll('myOptions')
@@ -55,43 +80,61 @@
             .attr("value", function (d) { return d; }) // corresponding value returned by the button
 
         // A color scale: one color for each group
+        //Come back here!
         const myColor = d3.scaleOrdinal()
             .domain(allGroup)
             .range(d3.schemeSet2);
 
+        //time parser
+        const parseTime = d3.timeParse("%Y");
+
         // Add X axis --> it is a date format
-        const x = d3.scaleLinear()
+        const x = d3.scaleTime()
             .domain(d3.extent(data, function (d) { return d.year; }))
             .range([0, width]);
-        svg.append("g")
+        svgLine.append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x).ticks(7));
+            .call(d3.axisBottom(x).tickFormat(d3.timeFormat(timeFormatter)))
+            . selectAll("text")
+            //.attr("transform", "translate(0,10)rotate(0)")
+            .style("text-anchor", "middle")
+            .style("color", basegrey)
+            .style("font-family", "lato")
+            .style("font-size", 13); // change here for axis marking (year)
 
         // Add Y axis
         const y = d3.scaleLinear()
-            .domain([0, d3.max(data, function (d) { return +d.n; })])
+            .domain([0, d3.max(data, function (d) { return +d.upperInterval; })])
             .range([height, 0]);
-        svg.append("g")
-            .call(d3.axisLeft(y));
+        svgLine.append("g")
+            .call(d3.axisLeft(y))
+            .selectAll('text')
+            .style("text-anchor", "end")
+            .style("color", basegrey)
+            .style("font-family", "lato")
+            .style("font-size", 13); //Change here for y axis font change 
 
-        // Initialize line with first group of the list
-        const line = svg
+        
+        // Initialize line with first country of the list
+        const line = svgLine
             .append('g')
             .append("path")
-            .datum(data.filter(function (d) { return d.name == "Helen" }))
+            .datum(data.filter(function (d) { return d.country == defaultCountry }))
             .attr("d", d3.line()
                 .x(function (d) { return x(d.year) })
-                .y(function (d) { return y(+d.n) })
+                .y(function (d) { return y(+d.actualEstimate) })
             )
             .attr("stroke", function (d) { return myColor("valueA") })
             .style("stroke-width", 4)
-            .style("fill", "none")
+            .style("fill", "none");
+        
+        
 
         // A function that update the chart
         function update(selectedGroup) {
 
             // Create new data with the selection?
-            const dataFilter = data.filter(function (d) { return d.name == selectedGroup })
+            const dataFilter = data.filter(function (d) { return d.country == selectedGroup })
 
             // Give these new data to update line
             line
@@ -100,7 +143,7 @@
                 .duration(1000)
                 .attr("d", d3.line()
                     .x(function (d) { return x(d.year) })
-                    .y(function (d) { return y(+d.n) })
+                    .y(function (d) { return y(+d.actualEstimate) })
                 )
                 .attr("stroke", function (d) { return myColor(selectedGroup) })
         }
