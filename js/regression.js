@@ -46,7 +46,7 @@ const svgLine = d3.select("#regressionChart")
     .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
 //Read the data
-d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regressionData/forecastingRough.csv", function (d) {
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regressionData/Forecast_newer.csv", function (d) {
     return {
         country: d.country, year: d3.timeParse(timeFormatter)(d.year), actualEstimate: d.actualEstimate,
         upperInterval: d.upperInterval, lowerInterval: d.lowerInterval
