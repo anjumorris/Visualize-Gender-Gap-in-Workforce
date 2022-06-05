@@ -1,5 +1,9 @@
 
-#case_map {
+.shared-row {
+    display: inline-block;
+}
+
+#case_map, #right_area {
     display: none;
 }
 
