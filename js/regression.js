@@ -34,8 +34,8 @@ d3.select('h3')
 
 // set the dimensions and margins of the graph
 const margin = { top: 10, right: 30, bottom: 30, left: 60 },
-    width = 1200 - margin.left - margin.right,
-    height = 700 - margin.top - margin.bottom;
+    width = 600 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 const svgLine = d3.select("#regressionChart")

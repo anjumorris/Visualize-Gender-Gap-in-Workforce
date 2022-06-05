@@ -13,13 +13,19 @@ document.body.addEventListener('click', function(e) {
       .attr('transform', 'translate(0, 0) scale(1)')
     country_clicked = false;
     minimized_map = false;
+    country_clicked_map_id = '';
+    country_clicked_name = '';
+    d3.select('#right_area')
+      .transition()
+      .duration(200)
+      .style('opacity', 0)
   }
 }, true); 
 
-function change(map_type) {
-  $('#map_title').text(map_type.label);
-  $('#' + (map_type.value == 'case' ? 'all_map' : 'case_map')).hide();
-  $('#' + map_type.value + '_map').show();
+function changeMapType(map_type) {
+  $('#map_title').text(map_type.target.__data__.label);
+  $('#' + (map_type.target.__data__.value == 'case' ? 'all_map' : 'case_map')).hide();
+  $('#' + map_type.target.__data__.value + '_map').show();
   // svg.select('#PLACEHOLDER')
   //     .transition()
   //     .duration(600)
@@ -51,7 +57,13 @@ function countryClick(d) {
     .style('stroke-width', 2)
   svg.transition()
     .duration(500)
+    .attr('width', 900)
     .attr('transform', 'translate(-200, 0) scale(0.6)')
+  d3.select('#right_area')
+    .transition()
+    .duration(1000)
+    .style('opacity', 1)
+    // $('#right_area').show();
 }
 
 /* map slider values */
@@ -148,7 +160,7 @@ $("#slider").slider({
       .attr("name", 'map_option')
       .attr("value", function(d) { return d.value; })
       // .style('accent-color', function(d) { return colors[d.toLowerCase()]; })
-      .on("change", change)
+      .on("change", changeMapType)
 
     d3.select('#option_id_all')
       .attr('checked', true)

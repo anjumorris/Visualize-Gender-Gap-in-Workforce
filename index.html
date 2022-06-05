@@ -21,25 +21,25 @@
     <h4>Anjali Sebastian, Kruta Arvind Prabhu, Ulysses Lin, Zachary Jeffreys</h4>
     <div class="container-fluid">
       <h2 id="map_title">All Asia</h2>
-      <div class="row">
-        <div class="shared-row">
+      <!-- <div class="row"> -->
+        <div class="col-xxl-7 shared-row map_wrapper">
           <svg id="all_map" width="1000" height="700"></svg>
-          <svg id="case_map" width="1000" height="700"></svg>
-          <div id="view_picker_wrapper">
-            <form id="view_picker"></form>
-          </div>
-          <div class="slidecontainer">
-            <p id="slider_year">Year: <span>1990</span></p>
-            <div id="slider"></div>
-          </div>
+          <!-- <svg id="case_map" width="1000" height="700"></svg> -->
         </div>
-        <div class="shared-row">
+        <div class="col-xxl-5 shared-row">
           <div id="right_area">
             <h2 id="country_clicked"></h2>
             <div id="regressionChart"></div>
           </div>
         </div>
-      </div>
+        <div id="view_picker_wrapper">
+          <form id="view_picker"></form>
+        </div>
+        <div class="slidecontainer">
+          <p id="slider_year">Year: <span>1990</span></p>
+          <div id="slider"></div>
+        </div>
+      <!-- </div> -->
     </div>
     <script src="/js/asia_map.js"></script>
     <script src="/js/regression.js"></script>
