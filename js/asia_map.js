@@ -1,3 +1,20 @@
+document.body.addEventListener('click', function(e) {
+  triggersEvent = Array.from(e.target.classList).some(function(toCheck) {
+      return ['country'].includes(toCheck);
+  });
+
+  if (!triggersEvent) {
+    d3.selectAll('.country')
+      .style('opacity', 0.8)
+      .style('stroke', 'white')
+    svg.transition()
+      .duration(500)
+      .attr('transform', 'translate(0, 0) scale(1)')
+    country_clicked = false;
+    minimized_map = false;
+  }
+}, true); 
+
 function change(map_type) {
   $('#map_title').text(map_type.label);
   $('#' + (map_type.value == 'case' ? 'all_map' : 'case_map')).hide();
@@ -26,6 +43,10 @@ $("#slider").slider({
     }
 });
 
+  var country_clicked = false;
+  var minimized_map = false;
+  var country_clicked_name = '';
+
 // The svg
   var svg = d3.select("#all_map"),
     width = +svg.attr("width"),
@@ -53,7 +74,8 @@ $("#slider").slider({
   function ready(error, topo) {
   
     let mouseOver = function(d) {
-      d3.selectAll(".Country")
+      var to_select = country_clicked_name ? '.country:not(#' + country_clicked_name + ')' : '.country';
+      d3.selectAll(to_select)
         .transition()
         .duration(200)
         .style("opacity", .5)
@@ -61,20 +83,42 @@ $("#slider").slider({
         .transition()
         .duration(200)
         .style("opacity", 1)
-        .style("stroke", "black")
     }
   
     let mouseLeave = function(d) {
-      d3.selectAll(".Country")
+      // minimized_map && 
+      var to_select = country_clicked_name ? '.country:not(#' + country_clicked_name + ')' : '.country';
+      d3.selectAll(to_select)
         .transition()
         .duration(200)
-        .style("opacity", .8)
-        d3.selectAll('.Country')
+        .style('opacity', .8)
+    }
+
+    var countryClick = function(i, scene) {
+      if (country_clicked_name == 'map_' + this.__data__.id) {
+        return;
+      }
+      country_clicked = true;
+      minimized_map = true;
+      country_clicked_name = 'map_' + this.__data__.id;
+      d3.selectAll('.country:not(#' + country_clicked_name + ')')
+        .transition()
+        .duration(200)
+        .style('opacity', .8)
         .style('stroke', 'white')
+      d3.select(this)
+        .transition()
+        .duration(200)
+        .style('opacity', 1)
+        .style('stroke', 'black')
+      svg.transition()
+        .duration(500)
+        .attr('transform', 'translate(-200, 0) scale(0.6)')
     }
   
     // Draw the map
     svg.append("g")
+      .attr('id', 'map_g')
       .selectAll("path")
       .data(topo.features)
       .enter()
@@ -90,10 +134,12 @@ $("#slider").slider({
       })
       .style("stroke", "white")
       .style('stroke-width', 1)
-      .attr("class", function(d){ return "Country" } )
+      .attr("class", function(d){ return "country" } )
+      .attr('id', function(d){ return 'map_' + d.id; } )
       .style("opacity", .8)
       .on("mouseover", mouseOver )
       .on("mouseleave", mouseLeave )
+      .on('click', countryClick)
 
     var labels = d3.select("#view_picker")
       .selectAll()
@@ -118,3 +164,6 @@ $("#slider").slider({
     labels.append('span')
       .text(function(d) { return d.label; })
   }
+
+  
+
