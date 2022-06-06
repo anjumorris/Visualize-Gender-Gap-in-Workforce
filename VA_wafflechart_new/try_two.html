@@ -49,14 +49,14 @@ var width,
     theDataFemale = [],
     theDataMale = [];
     
-var defaultCountry = "Afghanistan";
+var defaultCountry = "Japan";
 var defaultYear = "2012"; 
 
 var color = d3.scale.category10();
 
 // Code block for Women
 
-d3.csv("waffle_Wrangled.csv", function(error, data)
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle_Wrangled.csv", function(error, data)
 {
   
     data = data.filter(function(row) {
@@ -120,12 +120,44 @@ d3.csv("waffle_Wrangled.csv", function(error, data)
             return "Age range: " + data[d.groupIndex].womenJobCategory + " | " +  d.womenPercents + " , " + d.units + "%"
           });
 
+    //add legend with categorical data
+    var legend = d3.select("#legend")
+        .append("svg")
+        .attr('width', 300)
+        .attr('height', 200)
+        .append('g')
+        .selectAll("div")
+        .data(data)
+        .enter()
+        .append("g")
+        .attr('transform', function (d, i) { return "translate(0," + i * 20 + ")"; });
+    legend.append("rect")
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", function (d, i) { return color(i) });
+    legend.append("text")
+        .attr("x", 25)
+        .attr("y", 13)
+        .text(function (d) { return d.womenJobCategory });
+
+    //add value of a unit square
+    var legend2 = d3.select("#legend")
+        .select('svg')
+        .append('g')
+        .attr('transform', "translate(100,0)");
+
+    legend2.append("text")
+        .attr('y', '14')
+        .attr('font-size', '18px')
+        .text("Total: " + total)
+        .attr("fill", "#444444");
+
    
 });
 
 // Code block for Men
 
-d3.csv("waffle_Wrangled.csv", function(error, data)
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle_Wrangled.csv", function(error, data)
 {
   
     data = data.filter(function(row) {
