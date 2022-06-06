@@ -137,19 +137,6 @@ for (var y = 1990; y <= 2020; y++) {
   values.push(y);
 }
 
-/* init widget */
-$("#slider").slider({
-    value: 1990,
-    min: 1990,
-    max: 2020,
-    step: 1,
-    slide: function(event, ui) {
-      $("#slider_year span").text(ui.value);
-    }
-});
-
-
-
 // The svg
   var svg = d3.select("#all_map");
   
@@ -276,6 +263,70 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         .style('opacity', 0.4)
     }
 
+    /* init widget */
+    $("#slider").slider({
+      value: 1990,
+      min: 1990,
+      max: 2020,
+      step: 1,
+      slide: function(event, ui) {
+        $("#slider_year span").text(ui.value);
+        changeYear(ui.value);
+      }
+    });
+
+    // Update the dot density diagram with new year data from slider change
+    function changeYear(newYear) {
+      svg.select('#all_dots').remove()
+
+      svg.append('g')
+        .attr('id', 'all_dots')
+
+      var year_data = pop_data[newYear];
+      // DOT DENSITY
+      var asia_coords = topo.features;
+
+      for (var c in asia_coords) {
+        var matchedCountry = year_data[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
+          dots = matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0,
+          mwo_max = matchedCountry ? matchedCountry.mwo * dots : 0,
+          mw_max = matchedCountry ? matchedCountry.mw * dots : 0,
+          wwo_max = matchedCountry ? matchedCountry.wwo * dots : 0,
+          ww_max = matchedCountry ? matchedCountry.ww * dots : 0,
+          mwo_count = 0,
+          mw_count = 0,
+          wwo_count = 0,
+          ww_count = 0,
+          data_to_use = makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0, [], asia_coords[c].geometry.type == 'MultiPolygon');
+
+        (asia_coords[c].geometry.type == 'MultiPolygon') && (data_to_use = shuffle(data_to_use));
+        svg.select('#all_dots')
+          .append('g')
+          .attr('id', 'dots_' + (asia_coords[c].id || asia_coords[c].properties.ADMIN))
+          .selectAll()
+          .data(data_to_use)
+          .enter()
+          .append("circle")
+          .attr('class', 'dot')
+          .attr("cx", function(d) { return projection(d)[0]; })
+          .attr("cy", function(d) { return projection(d)[1]; })
+          .attr("r", "1.5px")
+          .attr("fill", function(d) {
+            if (mwo_count++ < mwo_max) {
+              return 'gray';
+            } else if (mw_count++ < mw_max) {
+              return 'black';
+            } else if (wwo_count++ < wwo_max) {
+              return non_adv_edu;
+            } else if (ww_count++ < ww_max) {
+              return adv_edu;
+            } else {
+              return 'white';
+            }
+          })
+      }
+    }
+
     svg.selectAll()
       .attr('fill', 'black')
   
@@ -346,11 +397,15 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       return array;
     }
 
-    var d2020 = pop_data['2020'];
+    svg.append('g')
+      .attr('id', 'all_dots')
+
+    var d1990 = pop_data['1990'];
     // DOT DENSITY
     var asia_coords = topo.features;
+
     for (var c in asia_coords) {
-      var matchedCountry = d2020[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
+      var matchedCountry = d1990[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
         dots = matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0,
         mwo_max = matchedCountry ? matchedCountry.mwo * dots : 0,
         mw_max = matchedCountry ? matchedCountry.mw * dots : 0,
@@ -363,29 +418,30 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         data_to_use = makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0, [], asia_coords[c].geometry.type == 'MultiPolygon');
 
       (asia_coords[c].geometry.type == 'MultiPolygon') && (data_to_use = shuffle(data_to_use));
-      svg.append('g')
-      .attr('id', 'dots_' + asia_coords[c].id)
-      .selectAll()
-      .data(data_to_use)
-      .enter()
-      .append("circle")
-      .attr('class', 'dot')
-      .attr("cx", function(d) { return projection(d)[0]; })
-      .attr("cy", function(d) { return projection(d)[1]; })
-      .attr("r", "1.5px")
-      .attr("fill", function(d) {
-        if (mwo_count++ < mwo_max) {
-          return 'gray';
-        } else if (mw_count++ < mw_max) {
-          return 'black';
-        } else if (wwo_count++ < wwo_max) {
-          return non_adv_edu;
-        } else if (ww_count++ < ww_max) {
-          return adv_edu;
-        } else {
-          return 'white';
-        }
-      })
+      svg.select('#all_dots')
+        .append('g')
+        .attr('id', 'dots_' + (asia_coords[c].id || asia_coords[c].properties.ADMIN))
+        .selectAll()
+        .data(data_to_use)
+        .enter()
+        .append("circle")
+        .attr('class', 'dot')
+        .attr("cx", function(d) { return projection(d)[0]; })
+        .attr("cy", function(d) { return projection(d)[1]; })
+        .attr("r", "1.5px")
+        .attr("fill", function(d) {
+          if (mwo_count++ < mwo_max) {
+            return 'gray';
+          } else if (mw_count++ < mw_max) {
+            return 'black';
+          } else if (wwo_count++ < wwo_max) {
+            return non_adv_edu;
+          } else if (ww_count++ < ww_max) {
+            return adv_edu;
+          } else {
+            return 'white';
+          }
+        })
     }
   })
 })
