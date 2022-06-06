@@ -27,17 +27,19 @@ p {
 <div id="title">
   <p>Division for male and female in workforce by working sectors</p>
   </div>
-
-
+  <br>
+<p>Female</p>
 <div id="waffleFemale">
 </div>
-
+<p>Male</p>
+<div id="waffleMale">
+</div>
 <div id="legend">
 </div>
 </body>
 
 <script>
-
+//var colors = ["#FCB583","#36E2BD", "	#36E2BD"];
 var total = 0;
 var width,
     height,
@@ -154,7 +156,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/wafflechart/VA_w
 
 // Code block for Men
 
-d3.csv("waffle_Wrangled.csv", function(error, data)
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/wafflechart/VA_wafflechart_new/waffle_Wrangled.csv", function(error, data)
 {
   
     data = data.filter(function(row) {
@@ -186,7 +188,7 @@ d3.csv("waffle_Wrangled.csv", function(error, data)
   width = (squareSize*widthSquares) + widthSquares*gap + 25;
   height = (squareSize*heightSquares) + heightSquares*gap + 25;
 
-  var waffle = d3.select("#waffleFemale")
+  var waffle = d3.select("#waffleMale")
       .append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -215,7 +217,7 @@ d3.csv("waffle_Wrangled.csv", function(error, data)
       .append("title")
         .text(function (d,i) 
           {
-            return "Sectors: " + data[d.groupIndex].menJobCategory + d.units + "%"
+            return "Sectors: " + data[d.groupIndex].menJobCategory + " | " + d.units + "%"
           });   
 });
 </script>
