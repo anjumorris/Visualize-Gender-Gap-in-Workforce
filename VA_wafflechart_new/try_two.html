@@ -25,7 +25,7 @@ p {
 <body>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <div id="title">
-  <p>A measure, by age population</p>
+  <p>Division for male and female in workforce by working sectors</p>
   </div>
 
 
@@ -56,7 +56,7 @@ var color = d3.scale.category10();
 
 // Code block for Women
 
-d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle_Wrangled.csv", function(error, data)
+d3.csv("waffle_Wrangled.csv", function(error, data)
 {
   
     data = data.filter(function(row) {
@@ -149,10 +149,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle
     legend2.append("text")
         .attr('y', '14')
         .attr('font-size', '18px')
-        .text("Total: " + total)
-        .attr("fill", "#444444");
-
-   
+        .attr("fill", "#444444"); 
 });
 
 // Code block for Men
@@ -218,17 +215,8 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle
       .append("title")
         .text(function (d,i) 
           {
-            return "Age range: " + data[d.groupIndex].menJobCategory + " | " +  d.menPercents + " , " + d.units + "%"
-          });
-
-   
+            return "Sectors: " + data[d.groupIndex].menJobCategory + d.units + "%"
+          });   
 });
-
-
-
-
-
-
-
 </script>
 </html>
