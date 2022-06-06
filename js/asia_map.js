@@ -9,10 +9,12 @@ var country_clicked_name = '';
 var background_country_fill = '#E1DFD0';
 var pop_data = {};
 var BORDER_COLOR = '#595959';
-var adv_edu = '#F97A1F';
-var non_adv_edu = '#1DC9A4';
 var POP_PER_DOT = 500000,
-  map_year = 1990;
+  map_year = 1990,
+  mwo_color = '#17B978',
+  mw_color = '#086972',
+  wwo_color = '#FF9A00',
+  ww_color = '#FF165D';
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -345,13 +347,13 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
           .attr("r", "1.5px")
           .attr("fill", function(d) {
             if (mwo_count++ < mwo_max) {
-              return 'gray';
+              return mwo_color;
             } else if (mw_count++ < mw_max) {
-              return 'black';
+              return mw_color;
             } else if (wwo_count++ < wwo_max) {
-              return non_adv_edu;
+              return wwo_color;
             } else if (ww_count++ < ww_max) {
-              return adv_edu;
+              return ww_color;
             } else {
               return 'white';
             }
@@ -468,13 +470,13 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         .attr("r", "1.5px")
         .attr("fill", function(d) {
           if (mwo_count++ < mwo_max) {
-            return 'gray';
+            return mwo_color;
           } else if (mw_count++ < mw_max) {
-            return 'black';
+            return mw_color;
           } else if (wwo_count++ < wwo_max) {
-            return non_adv_edu;
+            return wwo_color;
           } else if (ww_count++ < ww_max) {
-            return adv_edu;
+            return ww_color;
           } else {
             return 'white';
           }
