@@ -172,11 +172,11 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
             .attr("font-family", "lato")
             .style('fill', london20);
 
+        }
+        
+    })
     // When a country on the map is clicked, update line chart
     d3.selectAll(".country").on("click", function (event, d) {
         update(d.properties.name);
-        countryClick(d);
+        // countryClick(d);
     })
-}
-
-})
