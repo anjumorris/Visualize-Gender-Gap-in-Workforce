@@ -19,6 +19,11 @@ var POP_PER_DOT = 500000,
   },
   curr_map_type = 'all_dots';
 
+function toggle_country_names(e) {
+  d3.select('#country_names')
+    .style('visibility', e.target.checked ? 'visible' : 'hidden')
+}
+
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
 Generate points at random locations inside polygon.
@@ -352,6 +357,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
             .style('font-size', '12px')
             .attr('x', bbox.x + bbox.width/2 - 60)
             .attr('y', bbox.y + bbox.height/2 - 20)
+            .style('font-weight', 600)
             .text(asia_coords[c].properties.name || asia_coords[c].properties.ADMIN)
 
             var pie_data = {mwo: matchedCountry.mwo, mw: matchedCountry.mw, wwo: matchedCountry.wwo, ww: matchedCountry.ww};
@@ -450,6 +456,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
 
       //----------------------MAP POPULATED--------------------------
 
+    // MAP TYPE RADIOS
     var labels = d3.select("#view_picker")
       .selectAll()
       .data([
@@ -471,6 +478,23 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
 
     labels.append('span')
       .text(function(d) { return d.label; })
+
+    // COUNTRY LABELS
+    var show_names = d3.select("#country_name_toggle")
+        .append('label');
+
+      show_names.append("input")
+        .attr("type", "checkbox")
+        .attr('checked', false)
+        .attr("name", 'country_name_toggle')
+        .attr("value", false)
+        .on("change", toggle_country_names)
+    
+      show_names.append('span')
+        .text('Show country names')
+
+
+
 
     function shuffle(array) {
       let currentIndex = array.length,  randomIndex;
@@ -536,6 +560,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
             .style('font-size', '12px')
             .attr('x', bbox.x + bbox.width/2 - 60)
             .attr('y', bbox.y + bbox.height/2 - 20)
+            .style('font-weight', 600)
             .text(asia_coords[c].properties.name || asia_coords[c].properties.ADMIN)
 
             var pie_data = {mwo: matchedCountry.mwo, mw: matchedCountry.mw, wwo: matchedCountry.wwo, ww: matchedCountry.ww};
