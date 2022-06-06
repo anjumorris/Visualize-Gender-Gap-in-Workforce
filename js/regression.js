@@ -174,9 +174,9 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/regres
 
         }
         
-    })
-    // When a country on the map is clicked, update line chart
-    d3.selectAll(".country").on("click", function (event, d) {
-        update(d.properties.name);
-        // countryClick(d);
+        // When a country on the map is clicked, update line chart
+        // The usual d3.selectAll('.country').on('click', ...) is affected by some (async?) shenanigans...
+        document.body.addEventListener('click', function(e) {
+            update(e.target.__data__.properties.name);
+        });
     })
