@@ -1,7 +1,9 @@
 // var defaultCountry = "India";
 // var defaultYear = "2011";
 
-var color = d3.scaleOrdinal(d3.schemeCategory10);//d3.scale.category10();
+var color = d3.scaleOrdinal()
+    .domain([0, 1, 2])
+    .range(["#FBD051","#F97A1F","#1DC9A4"]);
 
 // Code block for Women
 //country,year,womenJobCategory,womenPercents,menJobCategory,menPercents
