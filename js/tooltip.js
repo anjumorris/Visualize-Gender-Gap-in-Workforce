@@ -8,9 +8,6 @@ var color = d3.scaleOrdinal()
 // Code block for Women
 //country,year,womenJobCategory,womenPercents,menJobCategory,menPercents
 
-const countryList = ["India", "Mongolia", "Japan"]
-const yearList = ["2015", "2016", "2017"]
-
 d3.select("#selectCountry")
 .selectAll('myOptions')
 .data(countryList)
@@ -110,6 +107,12 @@ function updateTooltip(selectedCountry, selectedYear) {
             return "Sectors: " + data[d.groupIndex].womenJobCategory + " | " + d.units + "%"
         })
 
+        for (var i = 0; i < data.length; i++) {
+            var cat = data[i].womenJobCategory;
+            d3.select('#tooltip_female_units .tooltip_unit.' + cat.toLowerCase())
+                .text(data[i].units + '%')
+        }
+
         //add legend with categorical data
         var oldlegend = d3.select("#legend")
         oldlegend.selectAll("*").remove();
@@ -198,6 +201,12 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflech
 
         var oldwaffle2 = d3.select("#waffleMale")
         oldwaffle2.selectAll("*").remove();
+
+        for (var i = 0; i < data.length; i++) {
+            var cat = data[i].menJobCategory;
+            d3.select('#tooltip_male_units .tooltip_unit.' + cat.toLowerCase())
+                .text(data[i].units + '%')
+        }
         
         var waffle2 = d3.select("#waffleMale")
         .append("svg")
