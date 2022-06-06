@@ -17,11 +17,17 @@
   </head>
 
   <body>
-    <h1>Labor Participation and Education of Women in Asia</h1>
-    <h4>Anjali Sebastian, Kruta Arvind Prabhu, Ulysses Lin, Zachary Jeffreys</h4>
     <div class="container-fluid">
-      <h2 id="map_title">All Asia</h2>
+      <h1>Gender Gap in the Workforce in East and South Asia</h1>
+      <p>Anjali Sebastian, Kruta Arvind Prabhu, Ulysses Lin, Zachary Jeffreys</p>
+      <h2 id="map_title">Women and Men in the Workforce, by Education Level</h2>
         <div class="col-xxl-7 shared-row map_wrapper">
+          <div id="map_legend">
+              <div><div id="wwo" class="legend_color_box"></div>Women without a Bachelor's</div>
+              <div><div id="ww" class="legend_color_box"></div>Women with a Bachelor's</div>
+              <div><div id="mwo" class="legend_color_box"></div><span>Men without a Bachelor's</span></div>
+              <div><div id="mw" class="legend_color_box"></div>Men with a Bachelor's</div>
+          </div>
           <svg id="all_map" width="1000" height="700"></svg>
         </div>
         <div class="col-xxl-5 shared-row">
@@ -30,15 +36,26 @@
             <div id="regressionChart"></div>
           </div>
         </div>
+        <!-- <div id="map_legend">
+          <div class="shared-row">
+            <div><div id="mwo" class="legend_color_box"></div><span>Men without a Bachelor's</span></div>
+            <div><div id="mw" class="legend_color_box"></div>Men with a Bachelor's</div>
+          </div>
+          <div class="shared-row">
+            <div><div id="wwo" class="legend_color_box"></div>Women without a Bachelor's</div>
+            <div><div id="ww" class="legend_color_box"></div>Women with a Bachelor's</div>
+          </div>
+        </div> -->
         <div id="view_picker_wrapper">
           <form id="view_picker"></form>
         </div>
         <div id="country_name_toggle_wrapper">
           <form id="country_name_toggle"></form>
         </div>
-        <div class="slidecontainer">
+        <div id="slidecontainer">
           <p id="slider_year">Year: <span>1990</span></p>
           <div id="slider"></div>
+          <div id="years_container"><span>1990</span><span>2020</span></div>
         </div>
     </div>
     <div id="tooltip">

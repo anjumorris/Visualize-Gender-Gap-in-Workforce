@@ -423,8 +423,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       }
     }
 
-    // svg.selectAll()
-    //   .attr('fill', 'black')
+    // -------------------------------------------------------------DRAW MAP---------------------------------------------------------------
   
     // Draw the map
     svg.append("g")
@@ -494,7 +493,10 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       show_names.append('span')
         .text('Show country names')
 
-
+    // I AM LEGEND
+    for (var [key, val] of Object.entries(map_colors)) {
+      $('#' + key).css('background', val);
+    }
 
 
     function shuffle(array) {

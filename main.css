@@ -1,6 +1,7 @@
 
 body {
     height: 100vh;
+    padding: 24px;
 }
 
 .shared-row {
@@ -28,7 +29,7 @@ body {
     max-width: 480px;
 }
 
-.slidecontainer {
+#slidecontainer {
     width: 100%; /* Width of the outside container */
   }
   
@@ -128,4 +129,30 @@ body {
 
 #donuts {
     display: none;
+}
+
+.legend_color_box {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-right: 4px;
+}
+
+#map_legend {
+    position: absolute;
+    top: 180px;
+}
+
+#view_picker_wrapper, #country_name_toggle_wrapper, #slidecontainer {
+    margin-bottom: 16px;
+    position: relative;
+    top: -88px;
+}
+
+#years_container {
+    margin-top: 8px;
+}
+
+#years_container span:first-of-type {
+    margin-right: 352px;
 }
