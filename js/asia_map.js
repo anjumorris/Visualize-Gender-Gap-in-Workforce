@@ -274,7 +274,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
   
     let mouseOver = function(d) {
       var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country',
-        country_name = d.target.__data__.properties.name;
+      country_name = d.target.__data__.properties.name || d.target.__data__.properties.ADMIN;
 
       d3.selectAll(to_select)
         .transition()
@@ -423,8 +423,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       }
     }
 
-    // svg.selectAll()
-    //   .attr('fill', 'black')
+    // -------------------------------------------------------------DRAW MAP---------------------------------------------------------------
   
     // Draw the map
     svg.append("g")
@@ -494,7 +493,10 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       show_names.append('span')
         .text('Show country names')
 
-
+    // I AM LEGEND
+    for (var [key, val] of Object.entries(map_colors)) {
+      $('#' + key).css('background', val);
+    }
 
 
     function shuffle(array) {

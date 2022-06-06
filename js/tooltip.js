@@ -38,7 +38,7 @@ function updateTooltip(selectedCountry, selectedYear) {
         theDataFemale = [],
         theDataMale = [];
 
-    d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
+    d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle_Wrangled.csv", function (d) {
         return {
             country: d.country, year: d.year, womenJobCategory: d.womenJobCategory,
             womenPercents: d.womenPercents, menJobCategory: d.menJobCategory, menPercents: d.menPercents
@@ -110,7 +110,7 @@ function updateTooltip(selectedCountry, selectedYear) {
 
         for (var i = 0; i < data.length; i++) {
             var cat = data[i].womenJobCategory;
-            d3.select('#tooltip_female_units .tooltip_unit.' + cat.toLowerCase())
+            d3.select('#tooltip_female_units .tooltip_unit.' + cat)
                 .text(data[i].units + '%')
         }
 
@@ -135,7 +135,7 @@ function updateTooltip(selectedCountry, selectedYear) {
         legend.append("text")
         .attr("x", 25)
         .attr("y", 13)
-        .text(function (d) { return d.womenJobCategory });
+        .text(function (d) { return d.womenJobCategory.split('femalesIn')[1] });
 
         //add value of a unit square
         var legend2 = d3.select("#legend")
@@ -163,7 +163,7 @@ function updateTooltip(selectedCountry, selectedYear) {
 
 
 // Code block for Men B
-d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle_Wrangled.csv", function (d) {
     return {
     country: d.country, year: d.year, womenJobCategory: d.womenJobCategory,
     womenPercents: d.womenPercents, menJobCategory: d.menJobCategory, menPercents: d.menPercents
@@ -205,7 +205,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflech
 
         for (var i = 0; i < data.length; i++) {
             var cat = data[i].menJobCategory;
-            d3.select('#tooltip_male_units .tooltip_unit.' + cat.toLowerCase())
+            d3.select('#tooltip_male_units .tooltip_unit.' + cat)
                 .text(data[i].units + '%')
         }
         
