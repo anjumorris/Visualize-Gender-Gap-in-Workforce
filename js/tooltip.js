@@ -3,7 +3,8 @@
 
 var color = d3.scaleOrdinal()
     .domain([0, 1, 2])
-    .range(["#FBD051","#F97A1F","#1DC9A4"]);
+    .range(["#FCDE83","#98A5E4","#FCB583"]);
+    //.range(["#FBD051","#7586DC","#FB9851"]);
 
 // Code block for Women
 //country,year,womenJobCategory,womenPercents,menJobCategory,menPercents
