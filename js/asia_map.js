@@ -11,6 +11,7 @@ var pop_data = {};
 var BORDER_COLOR = '#595959';
 var adv_edu = '#F97A1F';
 var non_adv_edu = '#1DC9A4';
+var POP_PER_DOT = 1000000;
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -26,21 +27,30 @@ desired number of points could not be generated within `options.numIterations` a
 function makeDots(name, polygons, numPoints, options, multiPoly) { // options can be empty []
   var points = [],
     polygon = [],
-    polys = 1;
+    polys = 1,
+    numPointsForPoly = [];
 
   if (multiPoly) {
+    var multiPolyAreaSum = 0;
     polys = polygons.length;
-    numPoints = numPoints / polys;
+    // numPoints = numPoints / polys;
+    for (var i = 0; i < polys; i++) {
+      numPointsForPoly.push(d3.polygonArea(polygons[i][0]));
+      multiPolyAreaSum += d3.polygonArea(polygons[i][0]);
+    }
+    for (var i = 0; i < polys; i++) {
+      numPointsForPoly[i] = numPoints * (numPointsForPoly[i] / multiPolyAreaSum);
+    }
   }
 
   for (var i = 0; i < polys; i++) {
     polygon = multiPoly ? polygons[i][0] : polygons[i];
-    options = Object.assign({
-      // DEFAULT OPTIONS:
+    multiPoly && (numPoints = numPointsForPoly[i])
+    options = {
       maxIterations: numPoints * 50,
       distance: null, // by default: MIN(width, height) / numPoints / 4,
-      edgeDistance: 0 // MOD
-    },options);
+      edgeDistance: -1 // MOD
+    };
 
     numPoints = Math.floor(numPoints)
 
@@ -66,6 +76,7 @@ function makeDots(name, polygons, numPoints, options, multiPoly) { // options ca
     options.distance = options.distance || Math.min(width, height) / numPoints / 4
     options.edgeDistance = options.edgeDistance || options.distance
     
+    var pushed = 0;
     outer:
     for (let i=0; i<options.maxIterations; i++) {
       let p = [xMin + Math.random() * width, yMin + Math.random() * height]
@@ -84,7 +95,10 @@ function makeDots(name, polygons, numPoints, options, multiPoly) { // options ca
           }
         }
         points.push(p);
-        if (points.length == numPoints) break;
+        pushed++;
+        if (pushed >= numPoints) {
+          break outer;
+        }
       }
     }
     
@@ -326,7 +340,7 @@ function countryClick(clicked) {
       .attr('id', 'dots_' + asia_coords[c].id)
       //function(d) { return 'dots_' + d.id; }
       .selectAll()
-      .data(makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, pop_data[asia_coords[c].id] / 1000000, [], asia_coords[c].geometry.type == 'MultiPolygon'))
+      .data(makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, pop_data[asia_coords[c].id] / POP_PER_DOT, [], asia_coords[c].geometry.type == 'MultiPolygon'))
       .enter()
       .append("circle")
       .attr('id', 'dingus')
