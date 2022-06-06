@@ -38,7 +38,7 @@ function updateTooltip(selectedCountry, selectedYear) {
         theDataFemale = [],
         theDataMale = [];
 
-    d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/wafflechart/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
+    d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
         return {
             country: d.country, year: d.year, womenJobCategory: d.womenJobCategory,
             womenPercents: d.womenPercents, menJobCategory: d.menJobCategory, menPercents: d.menPercents
@@ -157,7 +157,7 @@ function updateTooltip(selectedCountry, selectedYear) {
 
 
 // Code block for Men B
-d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/wafflechart/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
+d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/VA_wafflechart_new/waffle_Wrangled.csv", function (d) {
     return {
     country: d.country, year: d.year, womenJobCategory: d.womenJobCategory,
     womenPercents: d.womenPercents, menJobCategory: d.menJobCategory, menPercents: d.menPercents
