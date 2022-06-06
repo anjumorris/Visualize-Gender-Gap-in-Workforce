@@ -2,20 +2,21 @@
 // CPSC 5320 SP 2022
 // Final Project
 
+
 var country_clicked = false;
 var minimized_map = false;
 var country_clicked_map_id = '';
 var country_clicked_name = '';
-var background_country_fill = '#E1DFD0';
+var background_country_fill = '#F2F2F2';
 var pop_data = {};
 var BORDER_COLOR = '#595959';
 var POP_PER_DOT = 500000,
   map_year = 1990,
   map_colors = {
-    mwo: '#17B978',
-    mw: '#086972',
-    wwo: '#FF9A00',
-    ww: '#FF165D'
+    mwo: '#8EE4D1',
+    mw: '#1DC9A4',
+    wwo: '#E48EA1',
+    ww: '#C91D42'
   },
   curr_map_type = 'all_dots';
 
