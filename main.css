@@ -16,7 +16,7 @@ body {
     opacity: 0;
 }
 
-#view_picker input {
+#view_picker input, #country_name_toggle input {
     margin-right: 4px;
 }
 
