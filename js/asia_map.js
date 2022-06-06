@@ -274,7 +274,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
   
     let mouseOver = function(d) {
       var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country',
-        country_name = d.target.__data__.properties.name;
+      country_name = d.target.__data__.properties.name || d.target.__data__.properties.ADMIN;
 
       d3.selectAll(to_select)
         .transition()
