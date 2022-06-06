@@ -1,3 +1,91 @@
+/*
+Generate points at random locations inside polygon.
+    polygon: polygon (Array of points [x,y])
+    numPoints: number of points to generate
+
+Returns an Array of points [x,y].
+
+The returned Array will have a property complete, which is set to false if the
+desired number of points could not be generated within `options.numIterations` attempts
+*/
+function makeDots(polygon, numPoints, options) { 
+
+  options = Object.assign({
+    // DEFAULT OPTIONS:
+    maxIterations: numPoints * 50,
+    distance: null, // by default: MIN(width, height) / numPoints / 4,
+    edgeDistance: options.distance || 0
+  },options);
+
+  numPoints = Math.floor(numPoints)
+
+  // calculate bounding box
+  
+  let xMin = Infinity,
+    yMin = Infinity,
+    xMax = -Infinity,
+    yMax = -Infinity
+  
+  polygon.forEach(p => {
+    if (p[0]<xMin) xMin = p[0]
+    if (p[0]>xMax) xMax = p[0]
+    if (p[1]<yMin) yMin = p[1]
+    if (p[1]>yMax) yMax = p[1]
+  });
+
+  let width = xMax - xMin
+  let height = yMax - yMin
+  
+  // default options depending on bounds
+  
+  options.distance = options.distance || Math.min(width, height) / numPoints / 4
+  options.edgeDistance = options.edgeDistance || options.distance
+  
+  // generate points
+  
+  let points = [];
+  
+  outer:
+  for (let i=0; i<options.maxIterations; i++) {
+    let p = [xMin + Math.random() * width, yMin + Math.random() * height]
+    if (d3.polygonContains(polygon, p)) {
+      // check distance to other points
+      for (let j=0; j<points.length; j++) {
+        let dx = p[0]-points[j][0],
+            dy = p[1]-points[j][1]
+        
+        if (Math.sqrt(dx*dx+dy*dy) < options.distance) continue outer;
+      }
+      // check distance to polygon edge
+      for (let j=0; j<polygon.length-1; j++) {
+        if (distToSegmentSquared(p, polygon[j], polygon[j+1]) < options.edgeDistance) continue outer;
+      }
+      points.push(p);
+      if (points.length == numPoints) break;
+    }
+  }
+  
+  points.complete = (points.length >= numPoints)
+  
+  return points
+}
+
+function sqr(x) { return x * x }
+function dist2(v, w) { return sqr(v.x - w.x) + sqr(v.y - w.y) }
+function distToSegmentSquared(p, v, w) {
+  var l2 = dist2(v, w);
+  if (l2 == 0) return dist2(p, v);
+  var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2;
+  t = Math.max(0, Math.min(1, t));
+  return dist2(p, { x: v.x + t * (w.x - v.x),
+                    y: v.y + t * (w.y - v.y) });
+}
+function distToSegment(p, v, w) { return Math.sqrt(distToSegmentSquared(p, v, w)); }
+
+// makeDots([[0,0],[0,10],[10,10],[10,0]], 5, []);
+  // [[81.787959,7.523055],[81.637322,6.481775],[81.21802,6.197141],[80.348357,5.96837],[79.872469,6.763463],[79.695167,8.200843],[80.147801,9.824078],[80.838818,9.268427],[81.304319,8.564206],[81.787959,7.523055]]
+// -----------------------------------------------------------------------------
+
 document.body.addEventListener('click', function(e) {
   triggersEvent = Array.from(e.target.classList).some(function(toCheck) {
       return ['country'].includes(toCheck);
@@ -150,6 +238,25 @@ $("#slider").slider({
       .on("mouseover", mouseOver )
       .on("mouseleave", mouseLeave )
       // .on('click', countryClick)
+
+      //----------------------MAP POPULATED--------------------------
+var sri=[[81.787959,7.523055],[81.637322,6.481775],[81.21802,6.197141],[80.348357,5.96837],[79.872469,6.763463],[79.695167,8.200843],[80.147801,9.824078],[80.838818,9.268427],[81.304319,8.564206],[81.787959,7.523055]];
+    svg.append('g')
+      .attr('id', 'dots')
+      .selectAll()
+      .data(sri).enter()
+      .append("circle")
+      .attr('id', 'dingus')
+      // .attr("cx", d3.geoPath()
+      //   .projection(projection)
+      // )
+      .attr("cx", function(d) { return projection(d)[0]; })
+      .attr("cy", function(d) { return projection(d)[1]; })
+      // .attr("cx", function(d) { return d[0]; })
+      // .attr("cy", function(d) { return d[1]; })
+      .attr("r", "1px")
+      .attr("fill", "red")
+      
 
     var labels = d3.select("#view_picker")
       .selectAll()
