@@ -11,7 +11,7 @@ var pop_data = {};
 var BORDER_COLOR = '#595959';
 var adv_edu = '#F97A1F';
 var non_adv_edu = '#1DC9A4';
-var POP_PER_DOT = 1000000;
+var POP_PER_DOT = 500000;
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -102,7 +102,7 @@ function makeDots(name, polygons, numPoints, options, multiPoly) { // options ca
       }
     }
     
-    points.complete = (points.length >= numPoints)
+    // points.complete = (points.length >= numPoints)
   }
   
   return points
@@ -160,14 +160,33 @@ $("#slider").slider({
     .center([0,20])
     .translate([-500, 400]);
 
-    // d3.selectAll(".country").on("click", function (event, d) {
-    //   // update(d.properties.name);
-    //   countryClick(d);
-    // })
 // DOT DENSITY
-d3.csv('/data/world_populations.csv').then(function(data) {
-  for (country in data) {
-    pop_data[data[country].code] = parseInt(data[country].pop);
+d3.csv('/data/dot_wrangled.csv').then(function(data) {
+  // Set up years for 1990-2020
+  for (var y = 1990; y <= 2020; y++) {
+    pop_data[y] = {};
+  }
+  for (row in data) {
+    // WORKING POPULACE
+    // mwo: men without advanced education
+    // mw: men with advanced education
+    // wwo: women without advanced education
+    // ww: women with advanced education
+    if (Object.keys(pop_data).includes(data[row].year)) {
+      var mwo = parseInt(data[row].workingMenWithoutAdv),
+        mw = parseInt(data[row].workingMenWithAdv),
+        wwo = parseInt(data[row].workingWomenWithoutAdv),
+        ww = parseInt(data[row].workingWomenWithAdv),
+        sum = mwo + mw + wwo + ww;
+
+      pop_data[data[row].year][data[row].country] = {
+        mwo: mwo / sum,
+        mw: mw / sum,
+        wwo: wwo / sum,
+        ww: ww / sum,
+        sum: sum
+      }
+    }
   }
 
   d3.json('altered_world.geojson').then(function(topo) {
@@ -309,22 +328,64 @@ d3.csv('/data/world_populations.csv').then(function(data) {
     labels.append('span')
       .text(function(d) { return d.label; })
 
+    function shuffle(array) {
+      let currentIndex = array.length,  randomIndex;
+    
+      // While there remain elements to shuffle.
+      while (currentIndex != 0) {
+    
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+    
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex], array[currentIndex]];
+      }
+    
+      return array;
+    }
 
-
+    var d2020 = pop_data['2020'];
     // DOT DENSITY
     var asia_coords = topo.features;
     for (var c in asia_coords) {
+      var matchedCountry = d2020[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
+        dots = matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0,
+        mwo_max = matchedCountry ? matchedCountry.mwo * dots : 0,
+        mw_max = matchedCountry ? matchedCountry.mw * dots : 0,
+        wwo_max = matchedCountry ? matchedCountry.wwo * dots : 0,
+        ww_max = matchedCountry ? matchedCountry.ww * dots : 0,
+        mwo_count = 0,
+        mw_count = 0,
+        wwo_count = 0,
+        ww_count = 0,
+        data_to_use = makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0, [], asia_coords[c].geometry.type == 'MultiPolygon');
+
+      (asia_coords[c].geometry.type == 'MultiPolygon') && (data_to_use = shuffle(data_to_use));
       svg.append('g')
       .attr('id', 'dots_' + asia_coords[c].id)
       .selectAll()
-      .data(makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, pop_data[asia_coords[c].id] / POP_PER_DOT, [], asia_coords[c].geometry.type == 'MultiPolygon'))
+      .data(data_to_use)
       .enter()
       .append("circle")
-      .attr('id', 'dingus')
+      .attr('class', 'dot')
       .attr("cx", function(d) { return projection(d)[0]; })
       .attr("cy", function(d) { return projection(d)[1]; })
       .attr("r", "1.5px")
-      .attr("fill", function(d) { return Math.floor(Math.random() * 11) < 8 ? non_adv_edu : adv_edu; })
+      .attr("fill", function(d) {
+        if (mwo_count++ < mwo_max) {
+          return 'gray';
+        } else if (mw_count++ < mw_max) {
+          return 'black';
+        } else if (wwo_count++ < wwo_max) {
+          return non_adv_edu;
+        } else if (ww_count++ < ww_max) {
+          return adv_edu;
+        } else {
+          return 'white';
+        }
+      })
     }
   })
 })
