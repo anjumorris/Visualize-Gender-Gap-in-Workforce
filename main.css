@@ -102,9 +102,26 @@ body {
   }
 
   #legend {
+    padding-top: 12px;
     font: 13px Arial;
   }
 
   .dot {
       pointer-events: none;
   }
+
+.tooltip_unit {
+    font-weight: bold;
+}
+/* Tooltip percentage text colors */
+.tooltip_unit.service {
+    color: #FBD051;
+}
+
+.tooltip_unit.industry {
+    color: #F97A1F;
+}
+
+.tooltip_unit.agriculture {
+    color: #1DC9A4;
+}
