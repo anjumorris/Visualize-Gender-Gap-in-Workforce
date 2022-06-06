@@ -254,6 +254,10 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       // $('#right_area').show();
     d3.select('.map_wrapper')
       .style('width', '480px')
+    d3.select('#tooltip')
+      .transition()
+      .duration(400)
+      .style('opacity', 0)
   }
   
     let mouseOver = function(d) {
@@ -273,6 +277,9 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
 
       d3.select('#tooltip h3')
         .text(country_name)
+
+      d3.select('#tooltip')
+        .style('opacity', 1)
 
       updateTooltip(country_name, map_year)
     }
@@ -376,7 +383,11 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       .attr('id', function(d){ return 'map_' + d.id; } )
       .style("opacity", 0.4)
       .on("mouseover", mouseOver )
-      .on("mousemove", function(d) { return tooltip.style("top", (event.pageY - 300)+"px").style("left",(event.pageX + 100)+"px"); })
+      .on("mousemove", function(d) { 
+        d3.select('#tooltip')
+          .style('opacity', 1)
+        return tooltip.style("top", (event.pageY - 300)+"px").style("left",(event.pageX + 100)+"px"); 
+      })
       .on("mouseleave", mouseLeave )
       .on('click', countryClick)
 
