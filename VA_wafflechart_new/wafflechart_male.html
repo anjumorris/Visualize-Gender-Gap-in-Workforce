@@ -18,20 +18,20 @@ p {
 #legend {
   font: 13px Arial;
 }
+
 </style>
 </head>
 
 <body>
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <div id="title">
-  <p>Percentage of females in workforce by sectors</p>
+  <p>Percentage of males in workforce by sectors</p>
   </div>
 <div id="waffle">
 </div>
 <div id="legend">
 </div>
 </body>
-
 <script>
 
 var total = 0;
@@ -40,7 +40,7 @@ var width,
     widthSquares = 10,
     heightSquares = 10,
     squareSize = 25,
-    squareValue = 0,
+    squareValue_males = 0,
     gap = 1,
     theData = [];  
 
@@ -57,24 +57,26 @@ d3.csv("Data_Wrangled.csv", function(error, data)
   console.log(data);
 
   //total
-  total = parseFloat(data[0].test1) + parseFloat(data[0].test2 )+ parseFloat(data[0].test3);
+  total_males = parseFloat(data[0].test1_males) + parseFloat(data[0].test2_males)+ parseFloat(data[0].test3_males);
 
   //value of a square
-  squareValue = total / (widthSquares*heightSquares);
+  squareValue_males = 0;
+  squareValue_males = total_males / (widthSquares*heightSquares)
+  console.log(data[0]);
 
   
   //remap data
   data.forEach(function(d, i) 
   {
-      d.test1 = +d.test1;
-      d.units = Math.floor(d.test1/squareValue);
-      value_array.push(d.test1);
+      d.test1_males = +d.test1_males;
+      d.units = Math.floor(d.test1_males/squareValue_males);
+      value_array.push(d.test1_males);
       theData = theData.concat(
         Array(d.units+1).join(1).split('').map(function()
           {
-            return {  squareValue:squareValue,                      
+            return {  squareValue_males:squareValue_males,                      
                       units: d.units,
-                      percentage: d.test1,
+                      percentage: d.test1_males,
                       groupIndex: 0};
           })
         );
@@ -82,15 +84,15 @@ d3.csv("Data_Wrangled.csv", function(error, data)
 
   data.forEach(function(d, i) 
   {
-      d.test2 = +d.test2;
-      d.units = Math.floor(d.test2/squareValue);
-      value_array.push(d.test2);
+      d.test2_males = +d.test2_males;
+      d.units = Math.floor(d.test2_males/squareValue_males);
+      value_array.push(d.test2_males);
       theData = theData.concat(
         Array(d.units+1).join(1).split('').map(function()
           {
-            return {  squareValue:squareValue,                      
+            return {  squareValue_males:squareValue_males,                      
                       units: d.units,
-                      percentage: d.test2,
+                      percentage: d.test2_males,
                       groupIndex: 1};
           })
         );
@@ -98,15 +100,15 @@ d3.csv("Data_Wrangled.csv", function(error, data)
 
   data.forEach(function(d, i) 
   {
-      d.test3 = +d.test3;
-      d.units = Math.floor(d.test3/squareValue);
-      value_array.push(d.test3);
+      d.test3_males = +d.test3_males;
+      d.units = Math.floor(d.test3_males/squareValue_males);
+      value_array.push(d.test3_males);
       theData = theData.concat(
         Array(d.units+1).join(1).split('').map(function()
           {
-            return {  squareValue:squareValue,                      
+            return {  squareValue_males:squareValue_males,                      
                       units: d.units,
-                      percentage: d.test3,
+                      percentage: d.test3_males,
                       groupIndex: 2};
           })
         );
@@ -176,7 +178,7 @@ d3.csv("Data_Wrangled.csv", function(error, data)
   legend2.append("text")    
     .attr('y', '14')    
     .attr('font-size', '18px')
-    .text("Total: " + total)
+    .text("Total: " + total_males)
     .attr("fill", "#444444");
 });
 
