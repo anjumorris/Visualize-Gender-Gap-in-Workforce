@@ -125,3 +125,7 @@ body {
 .tooltip_unit.agriculture {
     color: #1DC9A4;
 }
+
+#donuts {
+    display: none;
+}

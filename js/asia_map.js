@@ -11,10 +11,13 @@ var pop_data = {};
 var BORDER_COLOR = '#595959';
 var POP_PER_DOT = 500000,
   map_year = 1990,
-  mwo_color = '#17B978',
-  mw_color = '#086972',
-  wwo_color = '#FF9A00',
-  ww_color = '#FF165D';
+  map_colors = {
+    mwo: '#17B978',
+    mw: '#086972',
+    wwo: '#FF9A00',
+    ww: '#FF165D'
+  },
+  curr_map_type = 'all_dots';
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -129,9 +132,10 @@ function distToSegment(p, v, w) { return Math.sqrt(distToSegmentSquared(p, v, w)
 
 
 function changeMapType(map_type) {
+  curr_map_type = map_type.target.__data__.value == 'donuts' ? 'donuts' : 'all_dots';
   $('#map_title').text(map_type.target.__data__.label);
-  $('#' + (map_type.target.__data__.value == 'case' ? 'all_map' : 'case_map')).hide();
-  $('#' + map_type.target.__data__.value + '_map').show();
+  $('#' + (map_type.target.__data__.value == 'donuts' ? 'all_dots' : 'donuts')).hide(800);
+  $('#' + (map_type.target.__data__.value == 'donuts' ? 'donuts' : 'all_dots')).show(800);
 }
 
 /* map slider values */
@@ -312,10 +316,12 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
 
     // Update the dot density diagram with new year data from slider change
     function changeYear(newYear) {
-      svg.select('#all_dots').remove()
-
-      svg.append('g')
-        .attr('id', 'all_dots')
+      if (curr_map_type == 'all_dots') {
+        svg.select('#all_dots').remove()
+  
+        svg.append('g')
+          .attr('id', 'all_dots')
+      }
 
       var year_data = pop_data[newYear],
         asia_coords = topo.features;
@@ -333,10 +339,58 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
           ww_count = 0,
           data_to_use = makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0, [], asia_coords[c].geometry.type == 'MultiPolygon');
 
+          if (curr_map_type == 'donuts') {
+        // DONUTS
+        if (matchedCountry) {
+          // code modified from https://stackoverflow.com/questions/33506489/how-to-get-a-path-centroid-d3
+          var c_id = asia_coords[c].id || asia_coords[c].properties.ISO_A3;
+          var bbox = document.getElementById('map_' + c_id).getBBox();
+          svg.select('#country_names')
+            .append('g')
+            .attr('id', 'proportions_' + c_id)
+            .append('text')
+            .style('font-size', '12px')
+            .attr('x', bbox.x + bbox.width/2 - 60)
+            .attr('y', bbox.y + bbox.height/2 - 20)
+            .text(asia_coords[c].properties.name || asia_coords[c].properties.ADMIN)
+
+            var pie_data = {mwo: matchedCountry.mwo, mw: matchedCountry.mw, wwo: matchedCountry.wwo, ww: matchedCountry.ww};
+          
+            var pie = d3.pie()
+            .value(function(d) { return d[1]; })
+            .sort(null);
+            var data_ready = pie(Object.entries(pie_data));
+          
+            d3.select('#donuts')
+            .append('g')
+            .attr('id', 'proportions_image_' + c_id)
+            .attr("transform", "translate(" + (bbox.x + bbox.width/2) + "," + (bbox.y + bbox.height/2) + ")")
+            // .attr("transform", "translate(" + 200 + "," + 360 + ")")
+            .selectAll()
+            .data(data_ready)
+            .enter()
+            .append('path')
+            .attr('d', d3.arc()
+              .innerRadius(12)
+              .outerRadius(20)
+            )
+            .attr('fill', function(d) { return map_colors[d.data[0]]; })
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+        }
+
+      } else {
+
+        // svg.select('#all_dots').remove()
+
+        // svg.append('g')
+        //   .attr('id', 'all_dots')
+
         (asia_coords[c].geometry.type == 'MultiPolygon') && (data_to_use = shuffle(data_to_use));
         svg.select('#all_dots')
           .append('g')
-          .attr('id', 'dots_' + (asia_coords[c].id || asia_coords[c].properties.ADMIN))
+          .attr('id', 'dots_' + c_id)
           .selectAll()
           .data(data_to_use)
           .enter()
@@ -347,22 +401,23 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
           .attr("r", "1.5px")
           .attr("fill", function(d) {
             if (mwo_count++ < mwo_max) {
-              return mwo_color;
+              return map_colors.mwo;
             } else if (mw_count++ < mw_max) {
-              return mw_color;
+              return map_colors.mw;
             } else if (wwo_count++ < wwo_max) {
-              return wwo_color;
+              return map_colors.wwo;
             } else if (ww_count++ < ww_max) {
-              return ww_color;
+              return map_colors.ww;
             } else {
               return 'white';
             }
           })
+        }
       }
     }
 
-    svg.selectAll()
-      .attr('fill', 'black')
+    // svg.selectAll()
+    //   .attr('fill', 'black')
   
     // Draw the map
     svg.append("g")
@@ -382,7 +437,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       .style("stroke", BORDER_COLOR)
       .style('stroke-width', 1.5)
       .attr("class", function(d){ return "country" } )
-      .attr('id', function(d){ return 'map_' + d.id; } )
+      .attr('id', function(d){ return 'map_' + (d.id || d.properties.ISO_A3); } )
       .style("opacity", 0.4)
       .on("mouseover", mouseOver )
       .on("mousemove", function(d) { 
@@ -398,8 +453,8 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
     var labels = d3.select("#view_picker")
       .selectAll()
       .data([
-        { label: "All Asia", value: "all" },
-        { label: "Case Studies", value: "case" }
+        { label: "Dot Density", value: "all_dots" },
+        { label: "Donuts", value: "donuts" }
       ])
       .enter()
       .append('label');
@@ -409,10 +464,9 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       .attr('id', function(d) { return 'option_id_' + d.value; })
       .attr("name", 'map_option')
       .attr("value", function(d) { return d.value; })
-      // .style('accent-color', function(d) { return colors[d.toLowerCase()]; })
       .on("change", changeMapType)
 
-    d3.select('#option_id_all')
+    d3.select('#option_id_all_dots')
       .attr('checked', true)
 
     labels.append('span')
@@ -443,6 +497,12 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
     // DOT DENSITY
     var asia_coords = topo.features;
 
+    svg.append('g')
+      .attr('id', 'country_names')
+
+    svg.append('g')
+      .attr('id', 'donuts')
+
     for (var c in asia_coords) {
       var matchedCountry = d1990[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
         dots = matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0,
@@ -456,10 +516,58 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         ww_count = 0,
         data_to_use = makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, matchedCountry ? matchedCountry.sum / POP_PER_DOT : 0, [], asia_coords[c].geometry.type == 'MultiPolygon');
 
+        // asia_coords[c].id
+        // matchedCountry.
+        // mw: 0.6427449768672969
+        // mwo: 0.1123595291356196
+        // sum: 441023039
+        // ww: 0.082750189384097
+        // wwo: 0.16214530461298643
+
+        // DONUTS
+        if (matchedCountry) {
+          // code modified from https://stackoverflow.com/questions/33506489/how-to-get-a-path-centroid-d3
+          var c_id = asia_coords[c].id || asia_coords[c].properties.ISO_A3;
+          var bbox = document.getElementById('map_' + c_id).getBBox();
+          svg.select('#country_names')
+            .append('g')
+            .attr('id', 'proportions_' + c_id)
+            .append('text')
+            .style('font-size', '12px')
+            .attr('x', bbox.x + bbox.width/2 - 60)
+            .attr('y', bbox.y + bbox.height/2 - 20)
+            .text(asia_coords[c].properties.name || asia_coords[c].properties.ADMIN)
+
+            var pie_data = {mwo: matchedCountry.mwo, mw: matchedCountry.mw, wwo: matchedCountry.wwo, ww: matchedCountry.ww};
+          
+            var pie = d3.pie()
+            .value(function(d) { return d[1]; })
+            .sort(null);
+            var data_ready = pie(Object.entries(pie_data));
+          
+            d3.select('#donuts')
+            .append('g')
+            .attr('id', 'proportions_image_' + c_id)
+            .attr("transform", "translate(" + (bbox.x + bbox.width/2) + "," + (bbox.y + bbox.height/2) + ")")
+            // .attr("transform", "translate(" + 200 + "," + 360 + ")")
+            .selectAll()
+            .data(data_ready)
+            .enter()
+            .append('path')
+            .attr('d', d3.arc()
+              .innerRadius(12)
+              .outerRadius(20)
+            )
+            .attr('fill', function(d) { return map_colors[d.data[0]]; })
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+        }
+
       (asia_coords[c].geometry.type == 'MultiPolygon') && (data_to_use = shuffle(data_to_use));
       svg.select('#all_dots')
         .append('g')
-        .attr('id', 'dots_' + (asia_coords[c].id || asia_coords[c].properties.ADMIN))
+        .attr('id', 'dots_' + c_id)
         .selectAll()
         .data(data_to_use)
         .enter()
@@ -470,13 +578,13 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         .attr("r", "1.5px")
         .attr("fill", function(d) {
           if (mwo_count++ < mwo_max) {
-            return mwo_color;
+            return map_colors.mwo;
           } else if (mw_count++ < mw_max) {
-            return mw_color;
+            return map_colors.mw;
           } else if (wwo_count++ < wwo_max) {
-            return wwo_color;
+            return map_colors.wwo;
           } else if (ww_count++ < ww_max) {
-            return ww_color;
+            return map_colors.ww;
           } else {
             return 'white';
           }
