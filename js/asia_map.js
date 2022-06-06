@@ -6,9 +6,11 @@ var country_clicked = false;
 var minimized_map = false;
 var country_clicked_map_id = '';
 var country_clicked_name = '';
-var background_country_fill = '#1A1A1A';
+var background_country_fill = 'white';
 var pop_data = {};
-var BORDER_COLOR = 'white';
+var BORDER_COLOR = '#595959';
+var adv_edu = '#F97A1F';
+var non_adv_edu = '#1DC9A4';
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -21,66 +23,73 @@ Returns an Array of points [x,y].
 The returned Array will have a property complete, which is set to false if the
 desired number of points could not be generated within `options.numIterations` attempts
 */
-function makeDots(polygon, numPoints, options) { // options can be empty []
+function makeDots(name, polygons, numPoints, options, multiPoly) { // options can be empty []
+  var points = [],
+    polygon = [],
+    polys = 1;
 
-  options = Object.assign({
-    // DEFAULT OPTIONS:
-    maxIterations: numPoints * 50,
-    distance: null, // by default: MIN(width, height) / numPoints / 4,
-    edgeDistance: 0 // MOD
-  },options);
-
-  numPoints = Math.floor(numPoints)
-
-  // calculate bounding box
-  
-  let xMin = Infinity,
-    yMin = Infinity,
-    xMax = -Infinity,
-    yMax = -Infinity
-  
-  polygon.forEach(p => {
-    if (p[0]<xMin) xMin = p[0]
-    if (p[0]>xMax) xMax = p[0]
-    if (p[1]<yMin) yMin = p[1]
-    if (p[1]>yMax) yMax = p[1]
-  });
-
-  let width = xMax - xMin
-  let height = yMax - yMin
-  
-  // default options depending on bounds
-  
-  options.distance = options.distance || Math.min(width, height) / numPoints / 4
-  options.edgeDistance = options.edgeDistance || options.distance
-  
-  // generate points
-  
-  let points = [];
-  
-  outer:
-  for (let i=0; i<options.maxIterations; i++) {
-    let p = [xMin + Math.random() * width, yMin + Math.random() * height]
-    if (d3.polygonContains(polygon, p)) {
-      // check distance to other points
-      for (let j=0; j<points.length; j++) {
-        let dx = p[0]-points[j][0],
-            dy = p[1]-points[j][1]
-        
-        if (Math.sqrt(dx*dx+dy*dy) < options.distance) continue outer;
-      }
-      // check distance to polygon edge
-      for (let j=0; j<polygon.length-1; j++) {
-        if (distToSegmentSquared(p, polygon[j], polygon[j+1]) < options.edgeDistance) {
-          continue outer;
-        }
-      }
-      points.push(p);
-      if (points.length == numPoints) break;
-    }
+  if (multiPoly) {
+    polys = polygons.length;
+    numPoints = numPoints / polys;
   }
-  
-  points.complete = (points.length >= numPoints)
+
+  for (var i = 0; i < polys; i++) {
+    polygon = multiPoly ? polygons[i][0] : polygons[i];
+    options = Object.assign({
+      // DEFAULT OPTIONS:
+      maxIterations: numPoints * 50,
+      distance: null, // by default: MIN(width, height) / numPoints / 4,
+      edgeDistance: 0 // MOD
+    },options);
+
+    numPoints = Math.floor(numPoints)
+
+    // calculate bounding box
+    
+    let xMin = Infinity,
+      yMin = Infinity,
+      xMax = -Infinity,
+      yMax = -Infinity
+    
+    polygon.forEach(p => {
+      if (p[0]<xMin) xMin = p[0]
+      if (p[0]>xMax) xMax = p[0]
+      if (p[1]<yMin) yMin = p[1]
+      if (p[1]>yMax) yMax = p[1]
+    });
+
+    let width = xMax - xMin
+    let height = yMax - yMin
+    
+    // default options depending on bounds
+    
+    options.distance = options.distance || Math.min(width, height) / numPoints / 4
+    options.edgeDistance = options.edgeDistance || options.distance
+    
+    outer:
+    for (let i=0; i<options.maxIterations; i++) {
+      let p = [xMin + Math.random() * width, yMin + Math.random() * height]
+      if (d3.polygonContains(polygon, p)) {
+        // check distance to other points
+        for (let j=0; j<points.length; j++) {
+          let dx = p[0]-points[j][0],
+              dy = p[1]-points[j][1]
+          
+          if (Math.sqrt(dx*dx+dy*dy) < options.distance) continue outer;
+        }
+        // check distance to polygon edge
+        for (let j=0; j<polygon.length-1; j++) {
+          if (distToSegmentSquared(p, polygon[j], polygon[j+1]) < options.edgeDistance) {
+            continue outer;
+          }
+        }
+        points.push(p);
+        if (points.length == numPoints) break;
+      }
+    }
+    
+    points.complete = (points.length >= numPoints)
+  }
   
   return points
 }
@@ -99,8 +108,6 @@ function distToSegmentSquared(p, v, w) {
 }
 function distToSegment(p, v, w) { return Math.sqrt(distToSegmentSquared(p, v, w)); }
 
-// var sri=makeDots([[81.787959,7.523055],[81.637322,6.481775],[81.21802,6.197141],[80.348357,5.96837],[79.872469,6.763463],[79.695167,8.200843],[80.147801,9.824078],[80.838818,9.268427],[81.304319,8.564206],[81.787959,7.523055]], 50, []);
-// var dingus = makeDots([[0,0],[0,10],[10,10],[10,0]], 5, []);
 // -----------------------------------------------------------------------------
 
 
@@ -139,7 +146,7 @@ $("#slider").slider({
 
 
 // The svg
-  var svg = d3.select("#all_map");;
+  var svg = d3.select("#all_map");
   
   // Map and projection
   var path = d3.geoPath();
@@ -244,6 +251,9 @@ function countryClick(clicked) {
         .duration(200)
         .style('opacity', 0.7)
     }
+
+    svg.selectAll()
+      .attr('fill', 'black')
   
     // Draw the map
     svg.append("g")
@@ -316,14 +326,14 @@ function countryClick(clicked) {
       .attr('id', 'dots_' + asia_coords[c].id)
       //function(d) { return 'dots_' + d.id; }
       .selectAll()
-      .data(makeDots(asia_coords[c].geometry.coordinates[0], pop_data[asia_coords[c].id] / 1000000, []))
+      .data(makeDots(asia_coords[c].properties.name, asia_coords[c].geometry.coordinates, pop_data[asia_coords[c].id] / 1000000, [], asia_coords[c].geometry.type == 'MultiPolygon'))
       .enter()
       .append("circle")
       .attr('id', 'dingus')
       .attr("cx", function(d) { return projection(d)[0]; })
       .attr("cy", function(d) { return projection(d)[1]; })
       .attr("r", "1px")
-      .attr("fill", function(d) { return Math.floor(Math.random() * 11) < 8 ? '#ffe700' : '#FF4949'; })
+      .attr("fill", function(d) { return Math.floor(Math.random() * 11) < 8 ? non_adv_edu : adv_edu; })
     }
   })
 //pop_data[asia_coords[c].id]
