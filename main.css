@@ -94,3 +94,17 @@ body {
     border-color: #214472;
     position: absolute;
   }
+
+
+  /* BELGIAN WAFFLE */
+  #waffle {
+    margin-bottom: 30px;
+  }
+
+  #legend {
+    font: 13px Arial;
+  }
+
+  .dot {
+      pointer-events: none;
+  }

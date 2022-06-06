@@ -11,7 +11,8 @@ var pop_data = {};
 var BORDER_COLOR = '#595959';
 var adv_edu = '#F97A1F';
 var non_adv_edu = '#1DC9A4';
-var POP_PER_DOT = 500000;
+var POP_PER_DOT = 500000,
+  map_year = 1990;
 
 // makeDots modified code from https://observablehq.com/@floledermann/dot-density-maps-with-d3
 /*
@@ -138,14 +139,14 @@ for (var y = 1990; y <= 2020; y++) {
 }
 
 // The svg
-  var svg = d3.select("#all_map");
-  
-  // Map and projection
-  var path = d3.geoPath();
-  var projection = d3.geoMercator()
-    .scale(500)
-    .center([0,20])
-    .translate([-500, 400]);
+var svg = d3.select("#all_map");
+
+// Map and projection
+var path = d3.geoPath();
+var projection = d3.geoMercator()
+  .scale(500)
+  .center([0,20])
+  .translate([-500, 400]);
 
 // DOT DENSITY
 d3.csv('/data/dot_wrangled.csv').then(function(data) {
@@ -177,6 +178,19 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
   }
 
   d3.json('altered_world.geojson').then(function(topo) {
+
+    // create a tooltip
+    var tooltip = d3.select("#tooltip")
+      // .append("div")
+      .style("position", "absolute")
+      .style("visibility", "hidden")
+      .style("background-color", "white")
+      .style("border", "solid")
+      .style("border-width", "1px")
+      .style("border-radius", "5px")
+      .style("padding", "10px")
+      // .html("<p>I'm a tooltip written in HTML</p><img src='https://github.com/holtzy/D3-graph-gallery/blob/master/img/section/ArcSmal.png?raw=true'></img><br>Fancy<br><span style='font-size: 40px;'>Isn't it?</span>");
+
   // Clicking off of a country
   document.body.addEventListener('click', function(e) {
     triggersEvent = Array.from(e.target.classList).some(function(toCheck) {
@@ -243,7 +257,9 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
   }
   
     let mouseOver = function(d) {
-      var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country';
+      var to_select = country_clicked_map_id ? '.country:not(#' + country_clicked_map_id + ')' : '.country',
+        country_name = d.target.__data__.properties.name;
+
       d3.selectAll(to_select)
         .transition()
         .duration(200)
@@ -252,6 +268,13 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         .transition()
         .duration(200)
         .style("opacity", 1)
+
+      tooltip.style("visibility", "visible");
+
+      d3.select('#tooltip h3')
+        .text(country_name)
+
+      updateTooltip(country_name, map_year)
     }
   
     let mouseLeave = function(d) {
@@ -261,6 +284,8 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         .transition()
         .duration(200)
         .style('opacity', 0.4)
+
+      tooltip.style("visibility", "hidden");
     }
 
     /* init widget */
@@ -272,6 +297,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       slide: function(event, ui) {
         $("#slider_year span").text(ui.value);
         changeYear(ui.value);
+        map_year = ui.value;
       }
     });
 
@@ -282,9 +308,8 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       svg.append('g')
         .attr('id', 'all_dots')
 
-      var year_data = pop_data[newYear];
-      // DOT DENSITY
-      var asia_coords = topo.features;
+      var year_data = pop_data[newYear],
+        asia_coords = topo.features;
 
       for (var c in asia_coords) {
         var matchedCountry = year_data[asia_coords[c].properties.name || asia_coords[c].properties.ADMIN],
@@ -351,6 +376,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
       .attr('id', function(d){ return 'map_' + d.id; } )
       .style("opacity", 0.4)
       .on("mouseover", mouseOver )
+      .on("mousemove", function(d) { return tooltip.style("top", (event.pageY - 300)+"px").style("left",(event.pageX + 100)+"px"); })
       .on("mouseleave", mouseLeave )
       .on('click', countryClick)
 
@@ -444,7 +470,10 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
         })
     }
   })
-})
+
+
+
+}) // END of d3.csv.then()
 
 
 
