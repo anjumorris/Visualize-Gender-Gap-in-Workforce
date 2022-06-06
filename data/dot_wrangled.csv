@@ -1,4 +1,4 @@
-Country,Year of Year,"Population ages 15-64, female","Population ages 15-64, male",menNotWorking,womenNotWorking,workingMen,workingMenWithAdv,workingMenWithoutAdv,workingWomen,workingWomenWithAdv,workingWomenWithoutAdv
+country,year,"Population ages 15-64, female","Population ages 15-64, male",menNotWorking,womenNotWorking,workingMen,workingMenWithAdv,workingMenWithoutAdv,workingWomen,workingWomenWithAdv,workingWomenWithoutAdv
 Afghanistan,1990,3008042,3130991,594575,2531868,2536415,1551018,985397,476173,198992,277180
 Afghanistan,1991,3214481,3373893,643738,2703699,2730154,1696790,1033363,510781,218563,292217
 Afghanistan,1992,3488721,3697529,709186,2933316,2988342,1887138,1101204,555404,243211,312192
