@@ -143,10 +143,18 @@ body {
     top: 180px;
 }
 
+#bottom_wrapper {
+  position: relative;
+  top: -88px;
+}
+
+#bottom_wrapper > p {
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
 #view_picker_wrapper, #country_name_toggle_wrapper, #slidecontainer {
     margin-bottom: 16px;
-    position: relative;
-    top: -88px;
 }
 
 #years_container {
@@ -156,3 +164,4 @@ body {
 #years_container span:first-of-type {
     margin-right: 352px;
 }
+
