@@ -116,15 +116,15 @@ body {
 }
 /* Tooltip percentage text colors */
 .tooltip_unit.service {
-    color: #FBD051;
+    color: #FCDE83;
 }
 
 .tooltip_unit.industry {
-    color: #F97A1F;
+    color: #98A5E4;
 }
 
 .tooltip_unit.agriculture {
-    color: #1DC9A4;
+    color: #FCB583;
 }
 
 #donuts {
