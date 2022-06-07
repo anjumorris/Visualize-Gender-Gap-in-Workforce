@@ -161,7 +161,7 @@ var projection = d3.geoMercator()
   .translate([-500, 400]);
 
 // DOT DENSITY
-d3.csv('/data/dot_wrangled.csv').then(function(data) {
+d3.csv('https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/dot_wrangled.csv').then(function(data) {
   // Set up years for 1990-2020
   for (var y = 1990; y <= 2020; y++) {
     pop_data[y] = {};
@@ -189,7 +189,7 @@ d3.csv('/data/dot_wrangled.csv').then(function(data) {
     }
   }
 
-  d3.json('altered_world.geojson').then(function(topo) {
+  d3.json('https://raw.githubusercontent.com/UlyssesLin/world_bank/main/altered_world.geojson').then(function(topo) {
 
     // create a tooltip
     var tooltip = d3.select("#tooltip")
