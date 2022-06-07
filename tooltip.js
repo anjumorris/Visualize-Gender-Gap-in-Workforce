@@ -9,6 +9,7 @@ var color = d3.scaleOrdinal()
 // Code block for Women
 //country,year,womenJobCategory,womenPercents,menJobCategory,menPercents
 
+/*
 d3.select("#selectCountry")
 .selectAll('myOptions')
 .data(countryList)
@@ -24,7 +25,7 @@ d3.select("#selectYear")
 .append('option')
 .text(function (d) { return d; }) // text showed in the menu
 .attr("value", function (d) { return d; }) // corresponding value returned by the button
-
+*/
 // updateTooltip(defaultCountry, defaultYear)
 function updateTooltip(selectedCountry, selectedYear) {
     var total = 0;
@@ -112,6 +113,7 @@ function updateTooltip(selectedCountry, selectedYear) {
             var cat = data[i].womenJobCategory;
             d3.select('#tooltip_female_units .tooltip_unit.' + cat)
                 .text(data[i].units + '%')
+                .style("color",color(i))
         }
 
         //add legend with categorical data
@@ -207,6 +209,7 @@ d3.csv("https://raw.githubusercontent.com/UlyssesLin/world_bank/main/data/waffle
             var cat = data[i].menJobCategory;
             d3.select('#tooltip_male_units .tooltip_unit.' + cat)
                 .text(data[i].units + '%')
+                .style("color",color(i))
         }
         
         var waffle2 = d3.select("#waffleMale")
