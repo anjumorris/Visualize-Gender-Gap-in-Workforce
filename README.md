@@ -13,6 +13,7 @@ Our visualization answers some pertinent questions
 - What sectors (Agriculture, Industry, Services) do women and men work in?
 
 To find out more about our insights and the interesting case studies (Laos and Vietnam, India, China) we prepared using our visualization dashboard please check out the presentation
+https://github.com/anjumorris/Visualize-Gender-Gap-in-Workforce/blob/main/docs/FinalProject.pptx
 
 
 ### Tools
@@ -26,3 +27,5 @@ To find out more about our insights and the interesting case studies (Laos and V
 - D3 for the main visualization
 - Color Selection: Economist, Adobe Color, Coblis
 
+### Demonstration
+To run the dashboard please download the repository and open the index.html to get started 
