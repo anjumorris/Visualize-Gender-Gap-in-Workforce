@@ -29,3 +29,5 @@ https://github.com/anjumorris/Visualize-Gender-Gap-in-Workforce/blob/main/docs/F
 
 ### Demonstration
 To run the dashboard please download the repository and open the index.html to get started 
+![](https://github.com/anjumorris/Visualize-Gender-Gap-in-Workforce/blob/main/docs/gendergap_screenshot2.png)
+
